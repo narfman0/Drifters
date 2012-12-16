@@ -14,13 +14,13 @@ import com.blastedstudios.drifters.network.Generated.NetAccount;
 import com.blastedstudios.drifters.network.Generated.NetBeing.BeingType;
 import com.blastedstudios.drifters.network.Generated.FactionType;
 import com.blastedstudios.drifters.server.Server;
-import com.blastedstudios.drifters.server.ai.bt.BadgeBotBTLibrary;
+import com.blastedstudios.drifters.server.ai.bt.DriftersBotBTLibrary;
 import com.blastedstudios.drifters.world.Being;
 
 public class ArtificialBeing extends Being {
 	public final static String AI_WORLD = "AIWorld", AI_THREAD = "AIThread", 
 			OBJECTIVE = "Objective", SELF = "Self", WORLD = "World";
-	private static IBTLibrary btLibrary = new BadgeBotBTLibrary();
+	private static IBTLibrary btLibrary = new DriftersBotBTLibrary();
 	private IContext context;
 	private IBTExecutor btExecutor;
 	

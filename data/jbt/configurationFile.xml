@@ -1,5 +1,5 @@
 <Configuration>
-  <DomainFile>BadgeBotDomain.xml</DomainFile>
+  <DomainFile>DriftersBotDomain.xml</DomainFile>
   <ModelActionsPackage>com.blastedstudios.drifters.server.ai.bt.actions</ModelActionsPackage>
   <ModelConditionsPackage>com.blastedstudios.drifters.server.ai.bt.conditions</ModelConditionsPackage>
   <ModelActionsOutputDirectory>src/com/blastedstudios/drifters/server/ai/bt/actions</ModelActionsOutputDirectory>

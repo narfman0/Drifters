@@ -39,7 +39,7 @@ public class MainScreen extends AbstractScreen<Drifters> {
 				Gdx.app.exit();
 			}
 		});
-		Window window = new Window("Badge", skin);
+		Window window = new Window("Drifters", skin);
 		window.add(usernameLabel);
 		window.row();
 		window.add(passwordLabel);

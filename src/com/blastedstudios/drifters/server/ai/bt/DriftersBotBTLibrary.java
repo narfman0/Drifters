@@ -12,7 +12,7 @@ package com.blastedstudios.drifters.server.ai.bt;
  * <li>behaviorTree.xbt</li>
  * </ul>
  */
-public class BadgeBotBTLibrary implements jbt.execution.core.IBTLibrary {
+public class DriftersBotBTLibrary implements jbt.execution.core.IBTLibrary {
 	/** Tree generated from file behaviorTree.xbt. */
 	private static jbt.model.core.ModelTask Root;
 

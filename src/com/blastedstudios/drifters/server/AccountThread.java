@@ -20,7 +20,7 @@ import com.google.protobuf.CodedOutputStream;
 public class AccountThread {
 	private static Logger logger = Logger.getLogger(AccountThread.class.getCanonicalName());
 	private static int SAVE_FREQUENCY_SECONDS = Properties.getInt("account.save.frequency");
-	private static String ACCOUNT_DIRECTORY = Server.BADGE_DIRECTORY + "/accounts";
+	private static String ACCOUNT_DIRECTORY = Server.DRIFTERS_DIRECTORY + "/accounts";
 	public Map<String, NetAccount> accounts;
 	final Server server;
 	

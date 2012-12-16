@@ -1,10 +1,10 @@
 <Configuration>
  <BTLibrary>
   <BTFile>behaviorTree.xbt</BTFile>
-  <LibraryClassName>BadgeBotBTLibrary</LibraryClassName>
+  <LibraryClassName>DriftersBotBTLibrary</LibraryClassName>
   <LibraryPackage>com.blastedstudios.drifters.server.ai.bt</LibraryPackage>
   <LibraryOutputDirectory>src/com/blastedstudios/drifters/server/ai/bt</LibraryOutputDirectory>
-  <DomainFile>BadgeBotDomain.xml</DomainFile>
+  <DomainFile>DriftersBotDomain.xml</DomainFile>
   <ModelActionsPackage>com.blastedstudios.drifters.server.ai.bt.actions</ModelActionsPackage>
   <ModelConditionsPackage>com.blastedstudios.drifters.server.ai.bt.conditions</ModelConditionsPackage>
  </BTLibrary>
