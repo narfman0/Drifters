@@ -11,11 +11,11 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Array;
 import com.blastedstudios.drifters.Drifters;
+import com.blastedstudios.drifters.client.SaveManager;
 import com.blastedstudios.drifters.client.WorldManager;
 import com.blastedstudios.drifters.client.ui.gameplay.CharacterWindow;
 import com.blastedstudios.drifters.client.ui.gameplay.InventoryWindow;
 import com.blastedstudios.drifters.client.ui.gameplay.WeaponLockerWindow;
-import com.blastedstudios.drifters.network.Generated.NetAccount;
 import com.blastedstudios.drifters.network.Generated.NetBeing;
 import com.blastedstudios.drifters.ui.AbstractScreen;
 import com.blastedstudios.drifters.util.EventEnum;
@@ -31,9 +31,9 @@ public class GameplayScreen extends AbstractScreen<Drifters> implements EventLis
 	private SpriteBatch spriteBatch;
 	private Window characterWindow, weaponLockerWindow, inventoryWindow;
 	
-	public GameplayScreen(Drifters game, NetAccount account, NetBeing netBeing){
+	public GameplayScreen(Drifters game, NetBeing netBeing){
 		super(game);	
-		worldManager = new WorldManager(netBeing, account);
+		worldManager = new WorldManager(netBeing);
 		cam = new OrthographicCamera(28, 20);
 		spriteBatch = new SpriteBatch();
 		EventManager.addListener(EventEnum.LOGOUT_COMPLETE, this);
@@ -61,11 +61,12 @@ public class GameplayScreen extends AbstractScreen<Drifters> implements EventLis
 				}
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
 			EventManager.sendEvent(EventEnum.LOGOUT_INITIATE);
+			SaveManager.save(worldManager.getPlayer());
 			game.setScreen(new MainScreen(game));
 		}
 		if(Gdx.input.isKeyPressed(Keys.B) && worldManager.isInWeaponLockerRange()){
 			if(weaponLockerWindow == null){
-				weaponLockerWindow = new WeaponLockerWindow(skin);
+				weaponLockerWindow = new WeaponLockerWindow(skin, worldManager.getPlayer());
 				stage.addActor(weaponLockerWindow);
 			}else{
 				weaponLockerWindow.remove();

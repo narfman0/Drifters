@@ -11,8 +11,8 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 import com.badlogic.gdx.math.Vector2;
-import com.blastedstudios.drifters.network.Generated.NetBeing.BeingType;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.NetBeing.Class;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.server.Server;
 import com.blastedstudios.drifters.server.ai.Objective.ObjectiveEnum;
 import com.blastedstudios.drifters.util.Properties;
@@ -24,14 +24,14 @@ public class Faction {
 	public final Map<String,ArtificialBeing> beings;
 	private final List<String> namePrefixes;
 	private final Server server;
-	private final FactionType factionType;
+	private final Race factionType;
 	private float x, y;
 	private final AIWorld aiWorld;
 	private final List<Objective> objectives;
 	private final List<StrategicPoint> capturedStrategicPoints;
 	private static Random rand;
 	
-	public Faction(Server server, AIWorld aiWorld, FactionType factionType, List<String> namePrefixes,
+	public Faction(Server server, AIWorld aiWorld, Race factionType, List<String> namePrefixes,
 			float x, float y){
 		this.server = server;
 		this.aiWorld = aiWorld;
@@ -48,7 +48,7 @@ public class Faction {
 	public ArtificialBeing create(){
 		String name = namePrefixes.get(0) + "-" + beings.size(); 
 		beings.put(name,new ArtificialBeing(server, aiWorld, name, 
-				null, BeingType.ASSAULT, x+(rand.nextFloat()*4-2), y+rand.nextFloat(), 100, 100, 
+				Class.ASSAULT, x+(rand.nextFloat()*4-2), y+rand.nextFloat(), 100, 100, 
 				Arrays.asList(GunFactory.getAk47()), 
 				0, factionType, 0, 1, 0));
 		return beings.get(name);

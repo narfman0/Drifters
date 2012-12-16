@@ -18,7 +18,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.physics.PhysicsHelper;
 import com.blastedstudios.drifters.util.EventEnum;
 import com.blastedstudios.drifters.util.EventManager;
@@ -69,7 +69,7 @@ public class AIWorld implements EventListener {
 	}
 
 	public StrategicPoint getClosestStrategicPointNotOwned(
-			Vector2 origin, FactionType factionType) {
+			Vector2 origin, Race factionType) {
 		//vector2s are rounded because of hashcode graph trick, so must round
 		Vector2 originRounded = getClosestNode(Math.round(origin.x),Math.round(origin.y));
 		try{
@@ -119,11 +119,11 @@ public class AIWorld implements EventListener {
 		graphVisibleBodies.clear();
 		if(nodesVisible)
 			for(Vector2 node : movementGraph.vertexSet())
-				PhysicsHelper.createCircle(world, BodyType.StaticBody, .1f, 1, FactionType.NEUTRAL).setTransform(node, 0);
+				PhysicsHelper.createCircle(world, BodyType.StaticBody, .1f, 1, Race.NEUTRAL).setTransform(node, 0);
 		if(edgesVisible)
 			for(DefaultWeightedEdge edge : movementGraph.edgeSet()){
 				Vector2 source = movementGraph.getEdgeSource(edge), target = movementGraph.getEdgeTarget(edge);
-				PhysicsHelper.createEdge(world, BodyType.StaticBody, source.x, source.y, target.x, target.y, 1, FactionType.NEUTRAL);
+				PhysicsHelper.createEdge(world, BodyType.StaticBody, source.x, source.y, target.x, target.y, 1, Race.NEUTRAL);
 			}
 	}
 

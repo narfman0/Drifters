@@ -7,15 +7,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
-import com.blastedstudios.drifters.network.Generated.Gun;
 import com.blastedstudios.drifters.network.Generated.GunShot;
-import com.blastedstudios.drifters.network.Generated.NetAccount;
 import com.blastedstudios.drifters.network.Generated.NetBeing;
-import com.blastedstudios.drifters.network.Generated.FactionType;
 import com.blastedstudios.drifters.network.Generated.PlayerReward;
 import com.blastedstudios.drifters.network.Generated.ShotDamage;
-import com.blastedstudios.drifters.network.Generated.NetBeing.BeingType;
-import com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed;
 import com.blastedstudios.drifters.network.Generated.NetBeingList;
 import com.blastedstudios.drifters.network.Generated.ReloadRequest;
 import com.blastedstudios.drifters.network.Generated.WeaponLocker;
@@ -31,9 +26,8 @@ import com.google.protobuf.Message;
 public class Network implements EventListener{
 	private static Logger logger = Logger.getLogger(Network.class.getCanonicalName());
 	private static final EventEnum[] INTERESTING_EVENTS = new EventEnum[]{
-		EventEnum.ACCOUNT_RETRIEVE_REQUEST, EventEnum.CHARACTER_POSITION_CLIENT,
+		EventEnum.CHARACTER_POSITION_CLIENT,
 		EventEnum.CHARACTER_CHOSEN_INITIATE, EventEnum.CHARACTER_CHOSEN_COMPLETE,
-		EventEnum.CHARACTER_CREATE_REQUEST, EventEnum.CHARACTER_GUN_BUY_REQUEST,
 		EventEnum.CHARACTER_RELOAD_REQUEST,
 		EventEnum.GUN_SHOT_REQUEST, EventEnum.LOGOUT_INITIATE
 	};
@@ -49,22 +43,7 @@ public class Network implements EventListener{
 
 	@Override public void handleEvent(EventEnum event, Object... data) {
 		switch(event){
-		case ACCOUNT_RETRIEVE_REQUEST:{
-			connect();
-			NetAccount.Builder acct = NetAccount.newBuilder();
-			acct.setEmail((String) data[0]);
-			acct.setPassword((String) data[1]);
-			sendMessage(EventEnum.ACCOUNT_RETRIEVE_REQUEST, acct.build());
-			break;
-		}case CHARACTER_CREATE_REQUEST:{
-			NetBeing.Builder beingBuilder = NetBeing.newBuilder();
-			beingBuilder.setAccount((String) data[0]);
-			beingBuilder.setName((String) data[1]);
-			beingBuilder.setBeingType((BeingType) data[2]);
-			beingBuilder.setFactionType((FactionType) data[3]);
-			sendMessage(EventEnum.CHARACTER_CREATE_REQUEST, beingBuilder.build());
-			break;
-		}case CHARACTER_POSITION_CLIENT:{
+		case CHARACTER_POSITION_CLIENT:{
 			Being being = (Being) data[0];
 			NetBeing.Builder beingBuilder = NetBeing.newBuilder();
 			beingBuilder.setName(being.getName());
@@ -79,9 +58,6 @@ public class Network implements EventListener{
 			break;
 		}case CHARACTER_CHOSEN_INITIATE:
 			sendMessage(EventEnum.CHARACTER_CHOSEN_INITIATE, (NetBeing)data[0]);
-			break;
-		case CHARACTER_GUN_BUY_REQUEST:
-			sendMessage(EventEnum.CHARACTER_GUN_BUY_REQUEST, (Gun)data[0]);
 			break;
 		case CHARACTER_RELOAD_REQUEST:
 			ReloadRequest.Builder reload = ReloadRequest.newBuilder();
@@ -105,16 +81,6 @@ public class Network implements EventListener{
 
 	private void handleMessageReceived(EventEnum type, byte[] buffer) throws IOException{
 		switch(type){
-		case ACCOUNT_RETRIEVE_RESPONSE:
-			logger.info("Login success");
-			NetAccount netAccount = NetAccount.parseFrom(buffer);
-			EventManager.sendEvent(EventEnum.ACCOUNT_RETRIEVE_RESPONSE, netAccount);
-			break;
-		case CHARACTER_CREATE_FAILED:
-			logger.info("Character create failed");
-			String reason = NetBeingCreateFailed.parseFrom(buffer).getReason();
-			EventManager.sendEvent(EventEnum.CHARACTER_CREATE_FAILED, reason);
-			break;
 		case CHARACTER_CREATE_SUCCESS:
 			NetBeing netBeing = NetBeing.parseFrom(buffer);
 			logger.info("Character create success for " + netBeing.getName());
@@ -122,9 +88,6 @@ public class Network implements EventListener{
 			break;
 		case CHARACTER_CHOSEN_COMPLETE:
 			EventManager.sendEvent(EventEnum.CHARACTER_CHOSEN_COMPLETE);
-			break;
-		case CHARACTER_GUN_BUY_RESPONSE:
-			EventManager.sendEvent(EventEnum.CHARACTER_GUN_BUY_RESPONSE, Gun.parseFrom(buffer));
 			break;
 		case CHARACTER_POSITION_SERVER:
 			EventManager.sendEvent(EventEnum.CHARACTER_POSITION_SERVER, NetBeingList.parseFrom(buffer));

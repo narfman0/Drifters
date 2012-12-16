@@ -1,7 +1,7 @@
 package com.blastedstudios.drifters.server.ai;
 
 import com.badlogic.gdx.math.Vector2;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.util.EventEnum;
 import com.blastedstudios.drifters.util.EventManager;
 import com.blastedstudios.drifters.util.Properties;
@@ -39,7 +39,7 @@ public class StrategicPoint {
 				aabb[0].y <= y && aabb[1].y >= y;
 	}
 
-	public void capture(FactionType faction, float amount){
+	public void capture(Race faction, float amount){
 		if(captured == null)
 			captured = new CapturedStruct(faction, amount);
 		else if(captured.getPercentCaptured() < 100 &&
@@ -60,11 +60,11 @@ public class StrategicPoint {
 		return captured != null && captured.percentCaptured >= CAPTURE_AMOUNT;
 	}
 	
-	public boolean isCaptured(FactionType faction){
+	public boolean isCaptured(Race faction){
 		return isCaptured() && captured.faction.equals(faction);
 	}
 	
-	public FactionType getFaction(){
+	public Race getFaction(){
 		return captured != null ? captured.faction : null;
 	}
 	
@@ -73,10 +73,10 @@ public class StrategicPoint {
 	}
 
 	class CapturedStruct{
-		public final FactionType faction;
+		public final Race faction;
 		private float percentCaptured;
 		
-		public CapturedStruct(FactionType faction, float percentCaptured){
+		public CapturedStruct(Race faction, float percentCaptured){
 			this.faction = faction;
 			this.percentCaptured = percentCaptured;
 		}

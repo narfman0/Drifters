@@ -8,41 +8,41 @@ public final class Generated {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public enum FactionType
+  public enum Race
       implements com.google.protobuf.ProtocolMessageEnum {
     NEUTRAL(0, 0),
-    GORILLAS(1, 1),
-    ZEALOTS(2, 2),
-    STRANGERS(3, 3),
+    HUMAN(1, 1),
+    ELF(2, 2),
+    DWARF(3, 3),
     ;
     
     public static final int NEUTRAL_VALUE = 0;
-    public static final int GORILLAS_VALUE = 1;
-    public static final int ZEALOTS_VALUE = 2;
-    public static final int STRANGERS_VALUE = 3;
+    public static final int HUMAN_VALUE = 1;
+    public static final int ELF_VALUE = 2;
+    public static final int DWARF_VALUE = 3;
     
     
     public final int getNumber() { return value; }
     
-    public static FactionType valueOf(int value) {
+    public static Race valueOf(int value) {
       switch (value) {
         case 0: return NEUTRAL;
-        case 1: return GORILLAS;
-        case 2: return ZEALOTS;
-        case 3: return STRANGERS;
+        case 1: return HUMAN;
+        case 2: return ELF;
+        case 3: return DWARF;
         default: return null;
       }
     }
     
-    public static com.google.protobuf.Internal.EnumLiteMap<FactionType>
+    public static com.google.protobuf.Internal.EnumLiteMap<Race>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<FactionType>
+    private static com.google.protobuf.Internal.EnumLiteMap<Race>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FactionType>() {
-            public FactionType findValueByNumber(int number) {
-              return FactionType.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<Race>() {
+            public Race findValueByNumber(int number) {
+              return Race.valueOf(number);
             }
           };
     
@@ -59,11 +59,11 @@ public final class Generated {
       return com.blastedstudios.drifters.network.Generated.getDescriptor().getEnumTypes().get(0);
     }
     
-    private static final FactionType[] VALUES = {
-      NEUTRAL, GORILLAS, ZEALOTS, STRANGERS, 
+    private static final Race[] VALUES = {
+      NEUTRAL, HUMAN, ELF, DWARF, 
     };
     
-    public static FactionType valueOf(
+    public static Race valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -75,12 +75,12 @@ public final class Generated {
     private final int index;
     private final int value;
     
-    private FactionType(int index, int value) {
+    private Race(int index, int value) {
       this.index = index;
       this.value = value;
     }
     
-    // @@protoc_insertion_point(enum_scope:proto.FactionType)
+    // @@protoc_insertion_point(enum_scope:proto.Race)
   }
   
   public interface NetBeingOrBuilder
@@ -89,10 +89,6 @@ public final class Generated {
     // required string name = 1;
     boolean hasName();
     String getName();
-    
-    // optional string account = 2;
-    boolean hasAccount();
-    String getAccount();
     
     // optional float pos_x = 3;
     boolean hasPosX();
@@ -110,9 +106,9 @@ public final class Generated {
     boolean hasVelY();
     float getVelY();
     
-    // optional .proto.NetBeing.BeingType being_type = 7;
-    boolean hasBeingType();
-    com.blastedstudios.drifters.network.Generated.NetBeing.BeingType getBeingType();
+    // optional .proto.NetBeing.Class beingClass = 7;
+    boolean hasBeingClass();
+    com.blastedstudios.drifters.network.Generated.NetBeing.Class getBeingClass();
     
     // optional float max_hp = 8;
     boolean hasMaxHp();
@@ -122,9 +118,9 @@ public final class Generated {
     boolean hasHp();
     float getHp();
     
-    // optional .proto.FactionType faction_type = 10 [default = NEUTRAL];
-    boolean hasFactionType();
-    com.blastedstudios.drifters.network.Generated.FactionType getFactionType();
+    // optional .proto.Race race = 10 [default = NEUTRAL];
+    boolean hasRace();
+    com.blastedstudios.drifters.network.Generated.Race getRace();
     
     // repeated .proto.Gun guns = 11;
     java.util.List<com.blastedstudios.drifters.network.Generated.Gun> 
@@ -180,7 +176,7 @@ public final class Generated {
       return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetBeing_fieldAccessorTable;
     }
     
-    public enum BeingType
+    public enum Class
         implements com.google.protobuf.ProtocolMessageEnum {
       ASSAULT(0, 1),
       DEMO(1, 2),
@@ -198,7 +194,7 @@ public final class Generated {
       
       public final int getNumber() { return value; }
       
-      public static BeingType valueOf(int value) {
+      public static Class valueOf(int value) {
         switch (value) {
           case 1: return ASSAULT;
           case 2: return DEMO;
@@ -209,15 +205,15 @@ public final class Generated {
         }
       }
       
-      public static com.google.protobuf.Internal.EnumLiteMap<BeingType>
+      public static com.google.protobuf.Internal.EnumLiteMap<Class>
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<BeingType>
+      private static com.google.protobuf.Internal.EnumLiteMap<Class>
           internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<BeingType>() {
-              public BeingType findValueByNumber(int number) {
-                return BeingType.valueOf(number);
+            new com.google.protobuf.Internal.EnumLiteMap<Class>() {
+              public Class findValueByNumber(int number) {
+                return Class.valueOf(number);
               }
             };
       
@@ -234,11 +230,11 @@ public final class Generated {
         return com.blastedstudios.drifters.network.Generated.NetBeing.getDescriptor().getEnumTypes().get(0);
       }
       
-      private static final BeingType[] VALUES = {
+      private static final Class[] VALUES = {
         ASSAULT, DEMO, SNIPER, SPY, TANK, 
       };
       
-      public static BeingType valueOf(
+      public static Class valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
@@ -250,12 +246,12 @@ public final class Generated {
       private final int index;
       private final int value;
       
-      private BeingType(int index, int value) {
+      private Class(int index, int value) {
         this.index = index;
         this.value = value;
       }
       
-      // @@protoc_insertion_point(enum_scope:proto.NetBeing.BeingType)
+      // @@protoc_insertion_point(enum_scope:proto.NetBeing.Class)
     }
     
     private int bitField0_;
@@ -291,43 +287,11 @@ public final class Generated {
       }
     }
     
-    // optional string account = 2;
-    public static final int ACCOUNT_FIELD_NUMBER = 2;
-    private java.lang.Object account_;
-    public boolean hasAccount() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public String getAccount() {
-      java.lang.Object ref = account_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          account_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getAccountBytes() {
-      java.lang.Object ref = account_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        account_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
     // optional float pos_x = 3;
     public static final int POS_X_FIELD_NUMBER = 3;
     private float posX_;
     public boolean hasPosX() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     public float getPosX() {
       return posX_;
@@ -337,7 +301,7 @@ public final class Generated {
     public static final int POS_Y_FIELD_NUMBER = 4;
     private float posY_;
     public boolean hasPosY() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     public float getPosY() {
       return posY_;
@@ -347,7 +311,7 @@ public final class Generated {
     public static final int VEL_X_FIELD_NUMBER = 5;
     private float velX_;
     public boolean hasVelX() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     public float getVelX() {
       return velX_;
@@ -357,27 +321,27 @@ public final class Generated {
     public static final int VEL_Y_FIELD_NUMBER = 6;
     private float velY_;
     public boolean hasVelY() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     public float getVelY() {
       return velY_;
     }
     
-    // optional .proto.NetBeing.BeingType being_type = 7;
-    public static final int BEING_TYPE_FIELD_NUMBER = 7;
-    private com.blastedstudios.drifters.network.Generated.NetBeing.BeingType beingType_;
-    public boolean hasBeingType() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+    // optional .proto.NetBeing.Class beingClass = 7;
+    public static final int BEINGCLASS_FIELD_NUMBER = 7;
+    private com.blastedstudios.drifters.network.Generated.NetBeing.Class beingClass_;
+    public boolean hasBeingClass() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    public com.blastedstudios.drifters.network.Generated.NetBeing.BeingType getBeingType() {
-      return beingType_;
+    public com.blastedstudios.drifters.network.Generated.NetBeing.Class getBeingClass() {
+      return beingClass_;
     }
     
     // optional float max_hp = 8;
     public static final int MAX_HP_FIELD_NUMBER = 8;
     private float maxHp_;
     public boolean hasMaxHp() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     public float getMaxHp() {
       return maxHp_;
@@ -387,20 +351,20 @@ public final class Generated {
     public static final int HP_FIELD_NUMBER = 9;
     private float hp_;
     public boolean hasHp() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     public float getHp() {
       return hp_;
     }
     
-    // optional .proto.FactionType faction_type = 10 [default = NEUTRAL];
-    public static final int FACTION_TYPE_FIELD_NUMBER = 10;
-    private com.blastedstudios.drifters.network.Generated.FactionType factionType_;
-    public boolean hasFactionType() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+    // optional .proto.Race race = 10 [default = NEUTRAL];
+    public static final int RACE_FIELD_NUMBER = 10;
+    private com.blastedstudios.drifters.network.Generated.Race race_;
+    public boolean hasRace() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
-    public com.blastedstudios.drifters.network.Generated.FactionType getFactionType() {
-      return factionType_;
+    public com.blastedstudios.drifters.network.Generated.Race getRace() {
+      return race_;
     }
     
     // repeated .proto.Gun guns = 11;
@@ -428,7 +392,7 @@ public final class Generated {
     public static final int CURRENTGUN_FIELD_NUMBER = 12;
     private int currentGun_;
     public boolean hasCurrentGun() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     public int getCurrentGun() {
       return currentGun_;
@@ -438,7 +402,7 @@ public final class Generated {
     public static final int CASH_FIELD_NUMBER = 13;
     private int cash_;
     public boolean hasCash() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     public int getCash() {
       return cash_;
@@ -448,7 +412,7 @@ public final class Generated {
     public static final int LEVEL_FIELD_NUMBER = 14;
     private int level_;
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     public int getLevel() {
       return level_;
@@ -458,7 +422,7 @@ public final class Generated {
     public static final int XP_FIELD_NUMBER = 15;
     private int xp_;
     public boolean hasXp() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     public int getXp() {
       return xp_;
@@ -466,15 +430,14 @@ public final class Generated {
     
     private void initFields() {
       name_ = "";
-      account_ = "";
       posX_ = 0F;
       posY_ = 0F;
       velX_ = 0F;
       velY_ = 0F;
-      beingType_ = com.blastedstudios.drifters.network.Generated.NetBeing.BeingType.ASSAULT;
+      beingClass_ = com.blastedstudios.drifters.network.Generated.NetBeing.Class.ASSAULT;
       maxHp_ = 0F;
       hp_ = 0F;
-      factionType_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
+      race_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
       guns_ = java.util.Collections.emptyList();
       currentGun_ = 0;
       cash_ = 0;
@@ -501,45 +464,42 @@ public final class Generated {
         output.writeBytes(1, getNameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getAccountBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeFloat(3, posX_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeFloat(4, posY_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeFloat(5, velX_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeFloat(6, velY_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeEnum(7, beingType_.getNumber());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeEnum(7, beingClass_.getNumber());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeFloat(8, maxHp_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeFloat(9, hp_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeEnum(10, factionType_.getNumber());
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeEnum(10, race_.getNumber());
       }
       for (int i = 0; i < guns_.size(); i++) {
         output.writeMessage(11, guns_.get(i));
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(12, currentGun_);
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(13, cash_);
       }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeInt32(14, level_);
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeInt32(15, xp_);
       }
       getUnknownFields().writeTo(output);
@@ -557,57 +517,53 @@ public final class Generated {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getAccountBytes());
+          .computeFloatSize(3, posX_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, posX_);
+          .computeFloatSize(4, posY_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, posY_);
+          .computeFloatSize(5, velX_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(5, velX_);
+          .computeFloatSize(6, velY_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(6, velY_);
+          .computeEnumSize(7, beingClass_.getNumber());
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(7, beingType_.getNumber());
+          .computeFloatSize(8, maxHp_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(8, maxHp_);
+          .computeFloatSize(9, hp_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(9, hp_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(10, factionType_.getNumber());
+          .computeEnumSize(10, race_.getNumber());
       }
       for (int i = 0; i < guns_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, guns_.get(i));
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(12, currentGun_);
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(13, cash_);
       }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(14, level_);
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(15, xp_);
       }
@@ -738,38 +694,36 @@ public final class Generated {
         super.clear();
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        account_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         posX_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         posY_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         velX_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         velY_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        beingClass_ = com.blastedstudios.drifters.network.Generated.NetBeing.Class.ASSAULT;
         bitField0_ = (bitField0_ & ~0x00000020);
-        beingType_ = com.blastedstudios.drifters.network.Generated.NetBeing.BeingType.ASSAULT;
-        bitField0_ = (bitField0_ & ~0x00000040);
         maxHp_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000040);
         hp_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        race_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
         bitField0_ = (bitField0_ & ~0x00000100);
-        factionType_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
-        bitField0_ = (bitField0_ & ~0x00000200);
         if (gunsBuilder_ == null) {
           guns_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000200);
         } else {
           gunsBuilder_.clear();
         }
         currentGun_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000400);
         cash_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         xp_ = 0;
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
       
@@ -815,62 +769,58 @@ public final class Generated {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.account_ = account_;
+        result.posX_ = posX_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.posX_ = posX_;
+        result.posY_ = posY_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.posY_ = posY_;
+        result.velX_ = velX_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.velX_ = velX_;
+        result.velY_ = velY_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.velY_ = velY_;
+        result.beingClass_ = beingClass_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.beingType_ = beingType_;
+        result.maxHp_ = maxHp_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.maxHp_ = maxHp_;
+        result.hp_ = hp_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.hp_ = hp_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.factionType_ = factionType_;
+        result.race_ = race_;
         if (gunsBuilder_ == null) {
-          if (((bitField0_ & 0x00000400) == 0x00000400)) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
             guns_ = java.util.Collections.unmodifiableList(guns_);
-            bitField0_ = (bitField0_ & ~0x00000400);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.guns_ = guns_;
         } else {
           result.guns_ = gunsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.currentGun_ = currentGun_;
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.currentGun_ = currentGun_;
+        result.cash_ = cash_;
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00000800;
         }
-        result.cash_ = cash_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00001000;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
-          to_bitField0_ |= 0x00002000;
         }
         result.xp_ = xp_;
         result.bitField0_ = to_bitField0_;
@@ -892,9 +842,6 @@ public final class Generated {
         if (other.hasName()) {
           setName(other.getName());
         }
-        if (other.hasAccount()) {
-          setAccount(other.getAccount());
-        }
         if (other.hasPosX()) {
           setPosX(other.getPosX());
         }
@@ -907,8 +854,8 @@ public final class Generated {
         if (other.hasVelY()) {
           setVelY(other.getVelY());
         }
-        if (other.hasBeingType()) {
-          setBeingType(other.getBeingType());
+        if (other.hasBeingClass()) {
+          setBeingClass(other.getBeingClass());
         }
         if (other.hasMaxHp()) {
           setMaxHp(other.getMaxHp());
@@ -916,14 +863,14 @@ public final class Generated {
         if (other.hasHp()) {
           setHp(other.getHp());
         }
-        if (other.hasFactionType()) {
-          setFactionType(other.getFactionType());
+        if (other.hasRace()) {
+          setRace(other.getRace());
         }
         if (gunsBuilder_ == null) {
           if (!other.guns_.isEmpty()) {
             if (guns_.isEmpty()) {
               guns_ = other.guns_;
-              bitField0_ = (bitField0_ & ~0x00000400);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureGunsIsMutable();
               guns_.addAll(other.guns_);
@@ -936,7 +883,7 @@ public final class Generated {
               gunsBuilder_.dispose();
               gunsBuilder_ = null;
               guns_ = other.guns_;
-              bitField0_ = (bitField0_ & ~0x00000400);
+              bitField0_ = (bitField0_ & ~0x00000200);
               gunsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getGunsFieldBuilder() : null;
@@ -997,60 +944,55 @@ public final class Generated {
               name_ = input.readBytes();
               break;
             }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              account_ = input.readBytes();
-              break;
-            }
             case 29: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               posX_ = input.readFloat();
               break;
             }
             case 37: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               posY_ = input.readFloat();
               break;
             }
             case 45: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000008;
               velX_ = input.readFloat();
               break;
             }
             case 53: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000010;
               velY_ = input.readFloat();
               break;
             }
             case 56: {
               int rawValue = input.readEnum();
-              com.blastedstudios.drifters.network.Generated.NetBeing.BeingType value = com.blastedstudios.drifters.network.Generated.NetBeing.BeingType.valueOf(rawValue);
+              com.blastedstudios.drifters.network.Generated.NetBeing.Class value = com.blastedstudios.drifters.network.Generated.NetBeing.Class.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(7, rawValue);
               } else {
-                bitField0_ |= 0x00000040;
-                beingType_ = value;
+                bitField0_ |= 0x00000020;
+                beingClass_ = value;
               }
               break;
             }
             case 69: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000040;
               maxHp_ = input.readFloat();
               break;
             }
             case 77: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000080;
               hp_ = input.readFloat();
               break;
             }
             case 80: {
               int rawValue = input.readEnum();
-              com.blastedstudios.drifters.network.Generated.FactionType value = com.blastedstudios.drifters.network.Generated.FactionType.valueOf(rawValue);
+              com.blastedstudios.drifters.network.Generated.Race value = com.blastedstudios.drifters.network.Generated.Race.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(10, rawValue);
               } else {
-                bitField0_ |= 0x00000200;
-                factionType_ = value;
+                bitField0_ |= 0x00000100;
+                race_ = value;
               }
               break;
             }
@@ -1061,22 +1003,22 @@ public final class Generated {
               break;
             }
             case 96: {
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00000400;
               currentGun_ = input.readInt32();
               break;
             }
             case 104: {
-              bitField0_ |= 0x00001000;
+              bitField0_ |= 0x00000800;
               cash_ = input.readInt32();
               break;
             }
             case 112: {
-              bitField0_ |= 0x00002000;
+              bitField0_ |= 0x00001000;
               level_ = input.readInt32();
               break;
             }
             case 120: {
-              bitField0_ |= 0x00004000;
+              bitField0_ |= 0x00002000;
               xp_ = input.readInt32();
               break;
             }
@@ -1122,58 +1064,22 @@ public final class Generated {
         onChanged();
       }
       
-      // optional string account = 2;
-      private java.lang.Object account_ = "";
-      public boolean hasAccount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public String getAccount() {
-        java.lang.Object ref = account_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          account_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setAccount(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        account_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearAccount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        account_ = getDefaultInstance().getAccount();
-        onChanged();
-        return this;
-      }
-      void setAccount(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
-        account_ = value;
-        onChanged();
-      }
-      
       // optional float pos_x = 3;
       private float posX_ ;
       public boolean hasPosX() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public float getPosX() {
         return posX_;
       }
       public Builder setPosX(float value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         posX_ = value;
         onChanged();
         return this;
       }
       public Builder clearPosX() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         posX_ = 0F;
         onChanged();
         return this;
@@ -1182,19 +1088,19 @@ public final class Generated {
       // optional float pos_y = 4;
       private float posY_ ;
       public boolean hasPosY() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public float getPosY() {
         return posY_;
       }
       public Builder setPosY(float value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         posY_ = value;
         onChanged();
         return this;
       }
       public Builder clearPosY() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         posY_ = 0F;
         onChanged();
         return this;
@@ -1203,19 +1109,19 @@ public final class Generated {
       // optional float vel_x = 5;
       private float velX_ ;
       public boolean hasVelX() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public float getVelX() {
         return velX_;
       }
       public Builder setVelX(float value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         velX_ = value;
         onChanged();
         return this;
       }
       public Builder clearVelX() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         velX_ = 0F;
         onChanged();
         return this;
@@ -1224,44 +1130,44 @@ public final class Generated {
       // optional float vel_y = 6;
       private float velY_ ;
       public boolean hasVelY() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       public float getVelY() {
         return velY_;
       }
       public Builder setVelY(float value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000010;
         velY_ = value;
         onChanged();
         return this;
       }
       public Builder clearVelY() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         velY_ = 0F;
         onChanged();
         return this;
       }
       
-      // optional .proto.NetBeing.BeingType being_type = 7;
-      private com.blastedstudios.drifters.network.Generated.NetBeing.BeingType beingType_ = com.blastedstudios.drifters.network.Generated.NetBeing.BeingType.ASSAULT;
-      public boolean hasBeingType() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+      // optional .proto.NetBeing.Class beingClass = 7;
+      private com.blastedstudios.drifters.network.Generated.NetBeing.Class beingClass_ = com.blastedstudios.drifters.network.Generated.NetBeing.Class.ASSAULT;
+      public boolean hasBeingClass() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      public com.blastedstudios.drifters.network.Generated.NetBeing.BeingType getBeingType() {
-        return beingType_;
+      public com.blastedstudios.drifters.network.Generated.NetBeing.Class getBeingClass() {
+        return beingClass_;
       }
-      public Builder setBeingType(com.blastedstudios.drifters.network.Generated.NetBeing.BeingType value) {
+      public Builder setBeingClass(com.blastedstudios.drifters.network.Generated.NetBeing.Class value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000040;
-        beingType_ = value;
+        bitField0_ |= 0x00000020;
+        beingClass_ = value;
         onChanged();
         return this;
       }
-      public Builder clearBeingType() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        beingType_ = com.blastedstudios.drifters.network.Generated.NetBeing.BeingType.ASSAULT;
+      public Builder clearBeingClass() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        beingClass_ = com.blastedstudios.drifters.network.Generated.NetBeing.Class.ASSAULT;
         onChanged();
         return this;
       }
@@ -1269,19 +1175,19 @@ public final class Generated {
       // optional float max_hp = 8;
       private float maxHp_ ;
       public boolean hasMaxHp() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       public float getMaxHp() {
         return maxHp_;
       }
       public Builder setMaxHp(float value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000040;
         maxHp_ = value;
         onChanged();
         return this;
       }
       public Builder clearMaxHp() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000040);
         maxHp_ = 0F;
         onChanged();
         return this;
@@ -1290,44 +1196,44 @@ public final class Generated {
       // optional float hp = 9;
       private float hp_ ;
       public boolean hasHp() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       public float getHp() {
         return hp_;
       }
       public Builder setHp(float value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000080;
         hp_ = value;
         onChanged();
         return this;
       }
       public Builder clearHp() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000080);
         hp_ = 0F;
         onChanged();
         return this;
       }
       
-      // optional .proto.FactionType faction_type = 10 [default = NEUTRAL];
-      private com.blastedstudios.drifters.network.Generated.FactionType factionType_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
-      public boolean hasFactionType() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+      // optional .proto.Race race = 10 [default = NEUTRAL];
+      private com.blastedstudios.drifters.network.Generated.Race race_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
+      public boolean hasRace() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      public com.blastedstudios.drifters.network.Generated.FactionType getFactionType() {
-        return factionType_;
+      public com.blastedstudios.drifters.network.Generated.Race getRace() {
+        return race_;
       }
-      public Builder setFactionType(com.blastedstudios.drifters.network.Generated.FactionType value) {
+      public Builder setRace(com.blastedstudios.drifters.network.Generated.Race value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000200;
-        factionType_ = value;
+        bitField0_ |= 0x00000100;
+        race_ = value;
         onChanged();
         return this;
       }
-      public Builder clearFactionType() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        factionType_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
+      public Builder clearRace() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        race_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
         onChanged();
         return this;
       }
@@ -1336,9 +1242,9 @@ public final class Generated {
       private java.util.List<com.blastedstudios.drifters.network.Generated.Gun> guns_ =
         java.util.Collections.emptyList();
       private void ensureGunsIsMutable() {
-        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
           guns_ = new java.util.ArrayList<com.blastedstudios.drifters.network.Generated.Gun>(guns_);
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000200;
          }
       }
       
@@ -1454,7 +1360,7 @@ public final class Generated {
       public Builder clearGuns() {
         if (gunsBuilder_ == null) {
           guns_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
         } else {
           gunsBuilder_.clear();
@@ -1510,7 +1416,7 @@ public final class Generated {
           gunsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.blastedstudios.drifters.network.Generated.Gun, com.blastedstudios.drifters.network.Generated.Gun.Builder, com.blastedstudios.drifters.network.Generated.GunOrBuilder>(
                   guns_,
-                  ((bitField0_ & 0x00000400) == 0x00000400),
+                  ((bitField0_ & 0x00000200) == 0x00000200),
                   getParentForChildren(),
                   isClean());
           guns_ = null;
@@ -1521,19 +1427,19 @@ public final class Generated {
       // optional int32 currentGun = 12;
       private int currentGun_ ;
       public boolean hasCurrentGun() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       public int getCurrentGun() {
         return currentGun_;
       }
       public Builder setCurrentGun(int value) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00000400;
         currentGun_ = value;
         onChanged();
         return this;
       }
       public Builder clearCurrentGun() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000400);
         currentGun_ = 0;
         onChanged();
         return this;
@@ -1542,19 +1448,19 @@ public final class Generated {
       // optional int32 cash = 13;
       private int cash_ ;
       public boolean hasCash() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       public int getCash() {
         return cash_;
       }
       public Builder setCash(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000800;
         cash_ = value;
         onChanged();
         return this;
       }
       public Builder clearCash() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         cash_ = 0;
         onChanged();
         return this;
@@ -1563,19 +1469,19 @@ public final class Generated {
       // optional int32 level = 14;
       private int level_ ;
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       public int getLevel() {
         return level_;
       }
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00001000;
         level_ = value;
         onChanged();
         return this;
       }
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         level_ = 0;
         onChanged();
         return this;
@@ -1584,19 +1490,19 @@ public final class Generated {
       // optional int32 xp = 15;
       private int xp_ ;
       public boolean hasXp() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       public int getXp() {
         return xp_;
       }
       public Builder setXp(int value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00002000;
         xp_ = value;
         onChanged();
         return this;
       }
       public Builder clearXp() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         xp_ = 0;
         onChanged();
         return this;
@@ -3467,1151 +3373,6 @@ public final class Generated {
     }
     
     // @@protoc_insertion_point(class_scope:proto.GunShot)
-  }
-  
-  public interface NetAccountOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required string email = 1;
-    boolean hasEmail();
-    String getEmail();
-    
-    // optional string password = 2;
-    boolean hasPassword();
-    String getPassword();
-    
-    // repeated .proto.NetBeing beings = 3;
-    java.util.List<com.blastedstudios.drifters.network.Generated.NetBeing> 
-        getBeingsList();
-    com.blastedstudios.drifters.network.Generated.NetBeing getBeings(int index);
-    int getBeingsCount();
-    java.util.List<? extends com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder> 
-        getBeingsOrBuilderList();
-    com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder getBeingsOrBuilder(
-        int index);
-  }
-  public static final class NetAccount extends
-      com.google.protobuf.GeneratedMessage
-      implements NetAccountOrBuilder {
-    // Use NetAccount.newBuilder() to construct.
-    private NetAccount(Builder builder) {
-      super(builder);
-    }
-    private NetAccount(boolean noInit) {}
-    
-    private static final NetAccount defaultInstance;
-    public static NetAccount getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public NetAccount getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetAccount_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetAccount_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required string email = 1;
-    public static final int EMAIL_FIELD_NUMBER = 1;
-    private java.lang.Object email_;
-    public boolean hasEmail() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public String getEmail() {
-      java.lang.Object ref = email_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          email_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getEmailBytes() {
-      java.lang.Object ref = email_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        email_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional string password = 2;
-    public static final int PASSWORD_FIELD_NUMBER = 2;
-    private java.lang.Object password_;
-    public boolean hasPassword() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public String getPassword() {
-      java.lang.Object ref = password_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          password_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getPasswordBytes() {
-      java.lang.Object ref = password_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        password_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // repeated .proto.NetBeing beings = 3;
-    public static final int BEINGS_FIELD_NUMBER = 3;
-    private java.util.List<com.blastedstudios.drifters.network.Generated.NetBeing> beings_;
-    public java.util.List<com.blastedstudios.drifters.network.Generated.NetBeing> getBeingsList() {
-      return beings_;
-    }
-    public java.util.List<? extends com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder> 
-        getBeingsOrBuilderList() {
-      return beings_;
-    }
-    public int getBeingsCount() {
-      return beings_.size();
-    }
-    public com.blastedstudios.drifters.network.Generated.NetBeing getBeings(int index) {
-      return beings_.get(index);
-    }
-    public com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder getBeingsOrBuilder(
-        int index) {
-      return beings_.get(index);
-    }
-    
-    private void initFields() {
-      email_ = "";
-      password_ = "";
-      beings_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasEmail()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getBeingsCount(); i++) {
-        if (!getBeings(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getEmailBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getPasswordBytes());
-      }
-      for (int i = 0; i < beings_.size(); i++) {
-        output.writeMessage(3, beings_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getEmailBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getPasswordBytes());
-      }
-      for (int i = 0; i < beings_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, beings_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetAccount parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.blastedstudios.drifters.network.Generated.NetAccount prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.blastedstudios.drifters.network.Generated.NetAccountOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetAccount_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetAccount_fieldAccessorTable;
-      }
-      
-      // Construct using com.blastedstudios.drifters.network.Generated.NetAccount.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getBeingsFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        email_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        password_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (beingsBuilder_ == null) {
-          beings_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        } else {
-          beingsBuilder_.clear();
-        }
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.blastedstudios.drifters.network.Generated.NetAccount.getDescriptor();
-      }
-      
-      public com.blastedstudios.drifters.network.Generated.NetAccount getDefaultInstanceForType() {
-        return com.blastedstudios.drifters.network.Generated.NetAccount.getDefaultInstance();
-      }
-      
-      public com.blastedstudios.drifters.network.Generated.NetAccount build() {
-        com.blastedstudios.drifters.network.Generated.NetAccount result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.blastedstudios.drifters.network.Generated.NetAccount buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.blastedstudios.drifters.network.Generated.NetAccount result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.blastedstudios.drifters.network.Generated.NetAccount buildPartial() {
-        com.blastedstudios.drifters.network.Generated.NetAccount result = new com.blastedstudios.drifters.network.Generated.NetAccount(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.email_ = email_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.password_ = password_;
-        if (beingsBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
-            beings_ = java.util.Collections.unmodifiableList(beings_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.beings_ = beings_;
-        } else {
-          result.beings_ = beingsBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.blastedstudios.drifters.network.Generated.NetAccount) {
-          return mergeFrom((com.blastedstudios.drifters.network.Generated.NetAccount)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.blastedstudios.drifters.network.Generated.NetAccount other) {
-        if (other == com.blastedstudios.drifters.network.Generated.NetAccount.getDefaultInstance()) return this;
-        if (other.hasEmail()) {
-          setEmail(other.getEmail());
-        }
-        if (other.hasPassword()) {
-          setPassword(other.getPassword());
-        }
-        if (beingsBuilder_ == null) {
-          if (!other.beings_.isEmpty()) {
-            if (beings_.isEmpty()) {
-              beings_ = other.beings_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureBeingsIsMutable();
-              beings_.addAll(other.beings_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.beings_.isEmpty()) {
-            if (beingsBuilder_.isEmpty()) {
-              beingsBuilder_.dispose();
-              beingsBuilder_ = null;
-              beings_ = other.beings_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              beingsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getBeingsFieldBuilder() : null;
-            } else {
-              beingsBuilder_.addAllMessages(other.beings_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasEmail()) {
-          
-          return false;
-        }
-        for (int i = 0; i < getBeingsCount(); i++) {
-          if (!getBeings(i).isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              email_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              password_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              com.blastedstudios.drifters.network.Generated.NetBeing.Builder subBuilder = com.blastedstudios.drifters.network.Generated.NetBeing.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addBeings(subBuilder.buildPartial());
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // required string email = 1;
-      private java.lang.Object email_ = "";
-      public boolean hasEmail() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public String getEmail() {
-        java.lang.Object ref = email_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          email_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setEmail(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        email_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearEmail() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        email_ = getDefaultInstance().getEmail();
-        onChanged();
-        return this;
-      }
-      void setEmail(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
-        email_ = value;
-        onChanged();
-      }
-      
-      // optional string password = 2;
-      private java.lang.Object password_ = "";
-      public boolean hasPassword() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public String getPassword() {
-        java.lang.Object ref = password_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          password_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setPassword(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        password_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearPassword() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        password_ = getDefaultInstance().getPassword();
-        onChanged();
-        return this;
-      }
-      void setPassword(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
-        password_ = value;
-        onChanged();
-      }
-      
-      // repeated .proto.NetBeing beings = 3;
-      private java.util.List<com.blastedstudios.drifters.network.Generated.NetBeing> beings_ =
-        java.util.Collections.emptyList();
-      private void ensureBeingsIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          beings_ = new java.util.ArrayList<com.blastedstudios.drifters.network.Generated.NetBeing>(beings_);
-          bitField0_ |= 0x00000004;
-         }
-      }
-      
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.blastedstudios.drifters.network.Generated.NetBeing, com.blastedstudios.drifters.network.Generated.NetBeing.Builder, com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder> beingsBuilder_;
-      
-      public java.util.List<com.blastedstudios.drifters.network.Generated.NetBeing> getBeingsList() {
-        if (beingsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(beings_);
-        } else {
-          return beingsBuilder_.getMessageList();
-        }
-      }
-      public int getBeingsCount() {
-        if (beingsBuilder_ == null) {
-          return beings_.size();
-        } else {
-          return beingsBuilder_.getCount();
-        }
-      }
-      public com.blastedstudios.drifters.network.Generated.NetBeing getBeings(int index) {
-        if (beingsBuilder_ == null) {
-          return beings_.get(index);
-        } else {
-          return beingsBuilder_.getMessage(index);
-        }
-      }
-      public Builder setBeings(
-          int index, com.blastedstudios.drifters.network.Generated.NetBeing value) {
-        if (beingsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBeingsIsMutable();
-          beings_.set(index, value);
-          onChanged();
-        } else {
-          beingsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      public Builder setBeings(
-          int index, com.blastedstudios.drifters.network.Generated.NetBeing.Builder builderForValue) {
-        if (beingsBuilder_ == null) {
-          ensureBeingsIsMutable();
-          beings_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          beingsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addBeings(com.blastedstudios.drifters.network.Generated.NetBeing value) {
-        if (beingsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBeingsIsMutable();
-          beings_.add(value);
-          onChanged();
-        } else {
-          beingsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      public Builder addBeings(
-          int index, com.blastedstudios.drifters.network.Generated.NetBeing value) {
-        if (beingsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBeingsIsMutable();
-          beings_.add(index, value);
-          onChanged();
-        } else {
-          beingsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      public Builder addBeings(
-          com.blastedstudios.drifters.network.Generated.NetBeing.Builder builderForValue) {
-        if (beingsBuilder_ == null) {
-          ensureBeingsIsMutable();
-          beings_.add(builderForValue.build());
-          onChanged();
-        } else {
-          beingsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addBeings(
-          int index, com.blastedstudios.drifters.network.Generated.NetBeing.Builder builderForValue) {
-        if (beingsBuilder_ == null) {
-          ensureBeingsIsMutable();
-          beings_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          beingsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addAllBeings(
-          java.lang.Iterable<? extends com.blastedstudios.drifters.network.Generated.NetBeing> values) {
-        if (beingsBuilder_ == null) {
-          ensureBeingsIsMutable();
-          super.addAll(values, beings_);
-          onChanged();
-        } else {
-          beingsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      public Builder clearBeings() {
-        if (beingsBuilder_ == null) {
-          beings_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-        } else {
-          beingsBuilder_.clear();
-        }
-        return this;
-      }
-      public Builder removeBeings(int index) {
-        if (beingsBuilder_ == null) {
-          ensureBeingsIsMutable();
-          beings_.remove(index);
-          onChanged();
-        } else {
-          beingsBuilder_.remove(index);
-        }
-        return this;
-      }
-      public com.blastedstudios.drifters.network.Generated.NetBeing.Builder getBeingsBuilder(
-          int index) {
-        return getBeingsFieldBuilder().getBuilder(index);
-      }
-      public com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder getBeingsOrBuilder(
-          int index) {
-        if (beingsBuilder_ == null) {
-          return beings_.get(index);  } else {
-          return beingsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      public java.util.List<? extends com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder> 
-           getBeingsOrBuilderList() {
-        if (beingsBuilder_ != null) {
-          return beingsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(beings_);
-        }
-      }
-      public com.blastedstudios.drifters.network.Generated.NetBeing.Builder addBeingsBuilder() {
-        return getBeingsFieldBuilder().addBuilder(
-            com.blastedstudios.drifters.network.Generated.NetBeing.getDefaultInstance());
-      }
-      public com.blastedstudios.drifters.network.Generated.NetBeing.Builder addBeingsBuilder(
-          int index) {
-        return getBeingsFieldBuilder().addBuilder(
-            index, com.blastedstudios.drifters.network.Generated.NetBeing.getDefaultInstance());
-      }
-      public java.util.List<com.blastedstudios.drifters.network.Generated.NetBeing.Builder> 
-           getBeingsBuilderList() {
-        return getBeingsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.blastedstudios.drifters.network.Generated.NetBeing, com.blastedstudios.drifters.network.Generated.NetBeing.Builder, com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder> 
-          getBeingsFieldBuilder() {
-        if (beingsBuilder_ == null) {
-          beingsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.blastedstudios.drifters.network.Generated.NetBeing, com.blastedstudios.drifters.network.Generated.NetBeing.Builder, com.blastedstudios.drifters.network.Generated.NetBeingOrBuilder>(
-                  beings_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
-                  getParentForChildren(),
-                  isClean());
-          beings_ = null;
-        }
-        return beingsBuilder_;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:proto.NetAccount)
-    }
-    
-    static {
-      defaultInstance = new NetAccount(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:proto.NetAccount)
-  }
-  
-  public interface NetBeingCreateFailedOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required string reason = 1;
-    boolean hasReason();
-    String getReason();
-  }
-  public static final class NetBeingCreateFailed extends
-      com.google.protobuf.GeneratedMessage
-      implements NetBeingCreateFailedOrBuilder {
-    // Use NetBeingCreateFailed.newBuilder() to construct.
-    private NetBeingCreateFailed(Builder builder) {
-      super(builder);
-    }
-    private NetBeingCreateFailed(boolean noInit) {}
-    
-    private static final NetBeingCreateFailed defaultInstance;
-    public static NetBeingCreateFailed getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public NetBeingCreateFailed getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetBeingCreateFailed_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetBeingCreateFailed_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required string reason = 1;
-    public static final int REASON_FIELD_NUMBER = 1;
-    private java.lang.Object reason_;
-    public boolean hasReason() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public String getReason() {
-      java.lang.Object ref = reason_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          reason_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getReasonBytes() {
-      java.lang.Object ref = reason_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        reason_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    private void initFields() {
-      reason_ = "";
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasReason()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getReasonBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getReasonBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.blastedstudios.drifters.network.Generated.NetBeingCreateFailedOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetBeingCreateFailed_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.blastedstudios.drifters.network.Generated.internal_static_proto_NetBeingCreateFailed_fieldAccessorTable;
-      }
-      
-      // Construct using com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        reason_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed.getDescriptor();
-      }
-      
-      public com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed getDefaultInstanceForType() {
-        return com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed.getDefaultInstance();
-      }
-      
-      public com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed build() {
-        com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed buildPartial() {
-        com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed result = new com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.reason_ = reason_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed) {
-          return mergeFrom((com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed other) {
-        if (other == com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed.getDefaultInstance()) return this;
-        if (other.hasReason()) {
-          setReason(other.getReason());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasReason()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              reason_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // required string reason = 1;
-      private java.lang.Object reason_ = "";
-      public boolean hasReason() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public String getReason() {
-        java.lang.Object ref = reason_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          reason_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setReason(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        reason_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearReason() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        reason_ = getDefaultInstance().getReason();
-        onChanged();
-        return this;
-      }
-      void setReason(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
-        reason_ = value;
-        onChanged();
-      }
-      
-      // @@protoc_insertion_point(builder_scope:proto.NetBeingCreateFailed)
-    }
-    
-    static {
-      defaultInstance = new NetBeingCreateFailed(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:proto.NetBeingCreateFailed)
   }
   
   public interface NetBeingListOrBuilder
@@ -6831,9 +5592,9 @@ public final class Generated {
   public interface WeaponLockerOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .proto.FactionType faction = 1;
+    // optional .proto.Race faction = 1;
     boolean hasFaction();
-    com.blastedstudios.drifters.network.Generated.FactionType getFaction();
+    com.blastedstudios.drifters.network.Generated.Race getFaction();
     
     // optional float pos_x = 2;
     boolean hasPosX();
@@ -6872,13 +5633,13 @@ public final class Generated {
     }
     
     private int bitField0_;
-    // optional .proto.FactionType faction = 1;
+    // optional .proto.Race faction = 1;
     public static final int FACTION_FIELD_NUMBER = 1;
-    private com.blastedstudios.drifters.network.Generated.FactionType faction_;
+    private com.blastedstudios.drifters.network.Generated.Race faction_;
     public boolean hasFaction() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public com.blastedstudios.drifters.network.Generated.FactionType getFaction() {
+    public com.blastedstudios.drifters.network.Generated.Race getFaction() {
       return faction_;
     }
     
@@ -6903,7 +5664,7 @@ public final class Generated {
     }
     
     private void initFields() {
-      faction_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
+      faction_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
       posX_ = 0F;
       posY_ = 0F;
     }
@@ -7073,7 +5834,7 @@ public final class Generated {
       
       public Builder clear() {
         super.clear();
-        faction_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
+        faction_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
         bitField0_ = (bitField0_ & ~0x00000001);
         posX_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -7187,7 +5948,7 @@ public final class Generated {
             }
             case 8: {
               int rawValue = input.readEnum();
-              com.blastedstudios.drifters.network.Generated.FactionType value = com.blastedstudios.drifters.network.Generated.FactionType.valueOf(rawValue);
+              com.blastedstudios.drifters.network.Generated.Race value = com.blastedstudios.drifters.network.Generated.Race.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -7212,15 +5973,15 @@ public final class Generated {
       
       private int bitField0_;
       
-      // optional .proto.FactionType faction = 1;
-      private com.blastedstudios.drifters.network.Generated.FactionType faction_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
+      // optional .proto.Race faction = 1;
+      private com.blastedstudios.drifters.network.Generated.Race faction_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
       public boolean hasFaction() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public com.blastedstudios.drifters.network.Generated.FactionType getFaction() {
+      public com.blastedstudios.drifters.network.Generated.Race getFaction() {
         return faction_;
       }
-      public Builder setFaction(com.blastedstudios.drifters.network.Generated.FactionType value) {
+      public Builder setFaction(com.blastedstudios.drifters.network.Generated.Race value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -7231,7 +5992,7 @@ public final class Generated {
       }
       public Builder clearFaction() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        faction_ = com.blastedstudios.drifters.network.Generated.FactionType.NEUTRAL;
+        faction_ = com.blastedstudios.drifters.network.Generated.Race.NEUTRAL;
         onChanged();
         return this;
       }
@@ -7305,16 +6066,6 @@ public final class Generated {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_proto_GunShot_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_NetAccount_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_proto_NetAccount_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_NetBeingCreateFailed_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_proto_NetBeingCreateFailed_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_NetBeingList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -7348,17 +6099,16 @@ public final class Generated {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026protobuf/network.proto\022\005proto\"\375\002\n\010NetB" +
-      "eing\022\014\n\004name\030\001 \002(\t\022\017\n\007account\030\002 \001(\t\022\r\n\005p" +
-      "os_x\030\003 \001(\002\022\r\n\005pos_y\030\004 \001(\002\022\r\n\005vel_x\030\005 \001(\002" +
-      "\022\r\n\005vel_y\030\006 \001(\002\022-\n\nbeing_type\030\007 \001(\0162\031.pr" +
-      "oto.NetBeing.BeingType\022\016\n\006max_hp\030\010 \001(\002\022\n" +
-      "\n\002hp\030\t \001(\002\0221\n\014faction_type\030\n \001(\0162\022.proto" +
-      ".FactionType:\007NEUTRAL\022\030\n\004guns\030\013 \003(\0132\n.pr" +
-      "oto.Gun\022\022\n\ncurrentGun\030\014 \001(\005\022\014\n\004cash\030\r \001(" +
-      "\005\022\r\n\005level\030\016 \001(\005\022\n\n\002xp\030\017 \001(\005\"A\n\tBeingTyp" +
-      "e\022\013\n\007ASSAULT\020\001\022\010\n\004DEMO\020\002\022\n\n\006SNIPER\020\003\022\007\n\003",
-      "SPY\020\004\022\010\n\004TANK\020\005\"\313\003\n\003Gun\022*\n\004type\030\001 \001(\0162\025." +
+      "\n\026protobuf/network.proto\022\005proto\"\325\002\n\010NetB" +
+      "eing\022\014\n\004name\030\001 \002(\t\022\r\n\005pos_x\030\003 \001(\002\022\r\n\005pos" +
+      "_y\030\004 \001(\002\022\r\n\005vel_x\030\005 \001(\002\022\r\n\005vel_y\030\006 \001(\002\022)" +
+      "\n\nbeingClass\030\007 \001(\0162\025.proto.NetBeing.Clas" +
+      "s\022\016\n\006max_hp\030\010 \001(\002\022\n\n\002hp\030\t \001(\002\022\"\n\004race\030\n " +
+      "\001(\0162\013.proto.Race:\007NEUTRAL\022\030\n\004guns\030\013 \003(\0132" +
+      "\n.proto.Gun\022\022\n\ncurrentGun\030\014 \001(\005\022\014\n\004cash\030" +
+      "\r \001(\005\022\r\n\005level\030\016 \001(\005\022\n\n\002xp\030\017 \001(\005\"=\n\005Clas" +
+      "s\022\013\n\007ASSAULT\020\001\022\010\n\004DEMO\020\002\022\n\n\006SNIPER\020\003\022\007\n\003" +
+      "SPY\020\004\022\010\n\004TANK\020\005\"\313\003\n\003Gun\022*\n\004type\030\001 \001(\0162\025.",
       "proto.Gun.WeaponType:\005MELEE\022\016\n\006damage\030\002 " +
       "\001(\002\022\020\n\010accuracy\030\003 \001(\002\022\024\n\014rate_of_fire\030\004 " +
       "\001(\002\022\024\n\014reload_speed\030\005 \001(\002\022\033\n\020projectile_" +
@@ -7367,31 +6117,27 @@ public final class Generated {
       "\022\026\n\016current_rounds\030\n \001(\005\022\014\n\004cost\030\013 \001(\005\022\014" +
       "\n\004name\030\014 \001(\t\"\266\001\n\nWeaponType\022\t\n\005MELEE\020\000\022\020" +
       "\n\014FLAMETHROWER\020\001\022\n\n\006PISTOL\020\002\022\007\n\003SMG\020\003\022\013\n" +
-      "\007SHOTGUN\020\004\022\t\n\005RIFLE\020\005\022\n\n\006SNIPER\020\006\022\023\n\017ROC",
-      "KET_LAUNCHER\020\007\022\024\n\020GRENADE_LAUNCHER\020\010\022\013\n\007" +
+      "\007SHOTGUN\020\004\022\t\n\005RIFLE\020\005\022\n\n\006SNIPER\020\006\022\023\n\017ROC" +
+      "KET_LAUNCHER\020\007\022\024\n\020GRENADE_LAUNCHER\020\010\022\013\n\007",
       "GRENADE\020\t\022\013\n\007MOLOTOV\020\n\022\r\n\tEXPLOSIVE\020\013\"m\n" +
       "\007GunShot\022\027\n\003gun\030\001 \001(\0132\n.proto.Gun\022\r\n\005bei" +
       "ng\030\002 \001(\t\022\r\n\005pos_x\030\003 \001(\002\022\r\n\005pos_y\030\004 \001(\002\022\r" +
-      "\n\005dir_x\030\005 \001(\002\022\r\n\005dir_y\030\006 \001(\002\"N\n\nNetAccou" +
-      "nt\022\r\n\005email\030\001 \002(\t\022\020\n\010password\030\002 \001(\t\022\037\n\006b" +
-      "eings\030\003 \003(\0132\017.proto.NetBeing\"&\n\024NetBeing" +
-      "CreateFailed\022\016\n\006reason\030\001 \002(\t\"/\n\014NetBeing" +
+      "\n\005dir_x\030\005 \001(\002\022\r\n\005dir_y\030\006 \001(\002\"/\n\014NetBeing" +
       "List\022\037\n\006beings\030\001 \003(\0132\017.proto.NetBeing\"\036\n" +
-      "\rReloadRequest\022\r\n\005being\030\001 \002(\t\"\301\001\n\nShotDa",
+      "\rReloadRequest\022\r\n\005being\030\001 \002(\t\"\301\001\n\nShotDa" +
       "mage\022\r\n\005being\030\001 \002(\t\022\016\n\006damage\030\002 \001(\002\022-\n\tb" +
       "ody_part\030\003 \001(\0162\032.proto.ShotDamage.BodyPa" +
       "rt\022\r\n\005dir_x\030\004 \001(\002\022\r\n\005dir_y\030\005 \001(\002\"G\n\010Body" +
-      "Part\022\010\n\004HEAD\020\001\022\t\n\005TORSO\020\002\022\010\n\004LARM\020\003\022\010\n\004R" +
+      "Part\022\010\n\004HEAD\020\001\022\t\n\005TORSO\020\002\022\010\n\004LARM\020\003\022\010\n\004R",
       "ARM\020\004\022\010\n\004LLEG\020\005\022\010\n\004RLEG\020\006\"\221\001\n\014PlayerRewa" +
       "rd\022\016\n\006player\030\001 \001(\t\0220\n\006reason\030\002 \001(\0162 .pro" +
       "to.PlayerReward.RewardReason\022\016\n\006reward\030\003" +
       " \001(\005\"/\n\014RewardReason\022\020\n\014ENEMY_KILLED\020\000\022\r" +
-      "\n\tENEMY_HIT\020\001\"Q\n\014WeaponLocker\022#\n\007faction" +
-      "\030\001 \001(\0162\022.proto.FactionType\022\r\n\005pos_x\030\002 \001(",
-      "\002\022\r\n\005pos_y\030\003 \001(\002*D\n\013FactionType\022\013\n\007NEUTR" +
-      "AL\020\000\022\014\n\010GORILLAS\020\001\022\013\n\007ZEALOTS\020\002\022\r\n\tSTRAN" +
-      "GERS\020\003B0\n#com.blastedstudios.drifters.ne" +
-      "tworkB\tGenerated"
+      "\n\tENEMY_HIT\020\001\"J\n\014WeaponLocker\022\034\n\007faction" +
+      "\030\001 \001(\0162\013.proto.Race\022\r\n\005pos_x\030\002 \001(\002\022\r\n\005po" +
+      "s_y\030\003 \001(\002*2\n\004Race\022\013\n\007NEUTRAL\020\000\022\t\n\005HUMAN\020" +
+      "\001\022\007\n\003ELF\020\002\022\t\n\005DWARF\020\003B0\n#com.blastedstud" +
+      "ios.drifters.networkB\tGenerated"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7403,7 +6149,7 @@ public final class Generated {
           internal_static_proto_NetBeing_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_proto_NetBeing_descriptor,
-              new java.lang.String[] { "Name", "Account", "PosX", "PosY", "VelX", "VelY", "BeingType", "MaxHp", "Hp", "FactionType", "Guns", "CurrentGun", "Cash", "Level", "Xp", },
+              new java.lang.String[] { "Name", "PosX", "PosY", "VelX", "VelY", "BeingClass", "MaxHp", "Hp", "Race", "Guns", "CurrentGun", "Cash", "Level", "Xp", },
               com.blastedstudios.drifters.network.Generated.NetBeing.class,
               com.blastedstudios.drifters.network.Generated.NetBeing.Builder.class);
           internal_static_proto_Gun_descriptor =
@@ -7422,24 +6168,8 @@ public final class Generated {
               new java.lang.String[] { "Gun", "Being", "PosX", "PosY", "DirX", "DirY", },
               com.blastedstudios.drifters.network.Generated.GunShot.class,
               com.blastedstudios.drifters.network.Generated.GunShot.Builder.class);
-          internal_static_proto_NetAccount_descriptor =
-            getDescriptor().getMessageTypes().get(3);
-          internal_static_proto_NetAccount_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_proto_NetAccount_descriptor,
-              new java.lang.String[] { "Email", "Password", "Beings", },
-              com.blastedstudios.drifters.network.Generated.NetAccount.class,
-              com.blastedstudios.drifters.network.Generated.NetAccount.Builder.class);
-          internal_static_proto_NetBeingCreateFailed_descriptor =
-            getDescriptor().getMessageTypes().get(4);
-          internal_static_proto_NetBeingCreateFailed_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_proto_NetBeingCreateFailed_descriptor,
-              new java.lang.String[] { "Reason", },
-              com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed.class,
-              com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed.Builder.class);
           internal_static_proto_NetBeingList_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_proto_NetBeingList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_proto_NetBeingList_descriptor,
@@ -7447,7 +6177,7 @@ public final class Generated {
               com.blastedstudios.drifters.network.Generated.NetBeingList.class,
               com.blastedstudios.drifters.network.Generated.NetBeingList.Builder.class);
           internal_static_proto_ReloadRequest_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_proto_ReloadRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_proto_ReloadRequest_descriptor,
@@ -7455,7 +6185,7 @@ public final class Generated {
               com.blastedstudios.drifters.network.Generated.ReloadRequest.class,
               com.blastedstudios.drifters.network.Generated.ReloadRequest.Builder.class);
           internal_static_proto_ShotDamage_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_proto_ShotDamage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_proto_ShotDamage_descriptor,
@@ -7463,7 +6193,7 @@ public final class Generated {
               com.blastedstudios.drifters.network.Generated.ShotDamage.class,
               com.blastedstudios.drifters.network.Generated.ShotDamage.Builder.class);
           internal_static_proto_PlayerReward_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_proto_PlayerReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_proto_PlayerReward_descriptor,
@@ -7471,7 +6201,7 @@ public final class Generated {
               com.blastedstudios.drifters.network.Generated.PlayerReward.class,
               com.blastedstudios.drifters.network.Generated.PlayerReward.Builder.class);
           internal_static_proto_WeaponLocker_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_proto_WeaponLocker_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_proto_WeaponLocker_descriptor,

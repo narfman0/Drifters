@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.physics.PhysicsHelper;
 
 public class MovingPlatform {
@@ -15,7 +15,7 @@ public class MovingPlatform {
 	private float maxDist = 0;		
 
 	public MovingPlatform(World world, float x, float y, float width, float height, float dx, float dy, float maxDist) {
-		platform = PhysicsHelper.createBox(world, BodyType.KinematicBody, width, height, 1, x,y, FactionType.NEUTRAL);			
+		platform = PhysicsHelper.createBox(world, BodyType.KinematicBody, width, height, 1, x,y, Race.NEUTRAL);			
 		pos.x = x;
 		pos.y = y;
 		dir.x = dx;

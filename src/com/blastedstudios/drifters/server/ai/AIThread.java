@@ -11,7 +11,7 @@ import java.util.TimerTask;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.server.Server;
 import com.blastedstudios.drifters.server.world.WorldManager;
 import com.blastedstudios.drifters.util.EventEnum;
@@ -51,8 +51,8 @@ public class AIThread {
 		}, AI_DELAY, WorldManager.CHARACTER_REFRESH_RATE);
 		
 		aiWorld = new AIWorld(server.world.getWorld());
-		gorillas = new Faction(server, aiWorld, FactionType.GORILLAS, Arrays.asList("Peon"), -100, 2);
-		zealots = new Faction(server, aiWorld, FactionType.ZEALOTS, Arrays.asList("Private"), 100, 2);
+		gorillas = new Faction(server, aiWorld, Race.HUMAN, Arrays.asList("Peon"), -100, 2);
+		zealots = new Faction(server, aiWorld, Race.DWARF, Arrays.asList("Private"), 100, 2);
 		aiBeings = new HashMap<String,ArtificialBeing>();
 	}
 
@@ -94,14 +94,14 @@ public class AIThread {
 	/**
 	 * @return sorted list of closest bases
 	 */
-	public List<Vector2> getClosestBases(Vector2 origin, FactionType factionType){
+	public List<Vector2> getClosestBases(Vector2 origin, Race factionType){
 		ArrayList<Vector2> bases = new ArrayList<Vector2>();
 		Faction faction = null;
 		switch(factionType){
-		case GORILLAS:
+		case HUMAN:
 			faction = gorillas;
 			break;
-		case ZEALOTS:
+		case DWARF:
 			faction = zealots;
 			break;
 		default:

@@ -23,7 +23,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.OrderedMap;
 import com.blastedstudios.drifters.network.Generated.GunShot;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.util.Properties;
 
 public class PhysicsHelper {
@@ -46,7 +46,7 @@ public class PhysicsHelper {
 	public static final float LOADER_WIDTH = Properties.getFloat("world.loader.width");
 
 	public static Body createBox(World world, BodyType type, float width, 
-			float height, float density, float x, float y, FactionType faction) {
+			float height, float density, float x, float y, Race faction) {
 		synchronized(world){
 			BodyDef def = new BodyDef();
 			def.type = type;
@@ -63,7 +63,7 @@ public class PhysicsHelper {
 	}	
  
 	public static Body createEdge(World world, BodyType type, float x1, float y1, 
-			float x2, float y2, float density, FactionType faction) {
+			float x2, float y2, float density, Race faction) {
 		synchronized(world){
 			BodyDef def = new BodyDef();
 			def.type = type;
@@ -80,7 +80,7 @@ public class PhysicsHelper {
 	}
  
 	public static Body createCircle(World world, BodyType type, float radius, 
-			float density, FactionType faction) {
+			float density, Race faction) {
 		synchronized(world){
 			BodyDef def = new BodyDef();
 			def.type = type;
@@ -133,7 +133,7 @@ public class PhysicsHelper {
 		return bodies;
 	}
 	
-	public static Body createBullet(World world, GunShot gunshot, FactionType faction){
+	public static Body createBullet(World world, GunShot gunshot, Race faction){
 		Body gunshotBody = PhysicsHelper.createCircle(world, BodyType.DynamicBody, 
 				BULLET_RADIUS, BULLET_DENSITY, faction);
 		synchronized(world){
@@ -160,30 +160,30 @@ public class PhysicsHelper {
 		return world.createJoint(joint);
 	}
 
-	public static short getMask(FactionType factionType){
+	public static short getMask(Race factionType){
 		if(factionType == null)
 			return MASK_NOTHING;
 		switch(factionType){
-		case GORILLAS:
+		case HUMAN:
 			return MASK_GORRILAS;
-		case STRANGERS:
+		case ELF:
 			return MASK_STRANGERS;
-		case ZEALOTS:
+		case DWARF:
 			return MASK_ZEALOTS;
 		default:
 			return MASK_SCENERY;
 		}
 	}
 	
-	public static short getCategory(FactionType factionType){
+	public static short getCategory(Race factionType){
 		if(factionType == null)
 			return CAT_NOTHING;
 		switch(factionType){
-		case GORILLAS:
+		case HUMAN:
 			return CAT_GORRILAS;
-		case STRANGERS:
+		case ELF:
 			return CAT_STRANGERS;
-		case ZEALOTS:
+		case DWARF:
 			return CAT_ZEALOTS;
 		default:
 			return CAT_SCENERY;

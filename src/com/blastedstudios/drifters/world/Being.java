@@ -13,10 +13,9 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.WorldManifold;
 import com.blastedstudios.drifters.network.Generated.Gun;
-import com.blastedstudios.drifters.network.Generated.NetAccount;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.network.Generated.ShotDamage;
-import com.blastedstudios.drifters.network.Generated.NetBeing.BeingType;
+import com.blastedstudios.drifters.network.Generated.NetBeing.Class;
 import com.blastedstudios.drifters.network.Generated.ShotDamage.BodyPart;
 import com.blastedstudios.drifters.physics.Ragdoll;
 import com.blastedstudios.drifters.util.Properties;
@@ -31,27 +30,25 @@ public class Being {
 	protected Ragdoll ragdoll;
 	private long lastGroundTime = 0, lastFireTime = 0;
 	private float stillTime = 0;
-	protected NetAccount account;
 	protected String name;
-	protected BeingType beingType;
-	protected FactionType factionType;
+	protected Class beingClass;
+	protected Race race;
 	protected float maxHP, hp;
 	private List<Gun> guns;
 	private int currentGun, cash, level, xp;
 	private float lastGunHeading;
 	private static final Map<BodyPart,Float> bodypartDmgMap = new HashMap<BodyPart, Float>();
 	
-	public Being(World world, String name, NetAccount account, BeingType type, 
+	public Being(World world, String name, Class type, 
 			float x, float y, float maxHP, float hp, List<Gun> guns, int currentGun,
-			FactionType factionType, int cash, int level, int xp){
+			Race race, int cash, int level, int xp){
 		this.name = name;
-		this.account = account;
-		this.beingType = type;
+		this.beingClass = type;
 		this.maxHP = maxHP;
 		this.hp = hp;
 		this.guns = guns;
 		this.currentGun = currentGun;
-		this.factionType = factionType;
+		this.race = race;
 		this.cash = cash;
 		this.level = level;
 		this.xp = xp;
@@ -211,8 +208,8 @@ public class Being {
 		this.name = name;
 	}
 	
-	public BeingType getType(){
-		return beingType;
+	public Class getType(){
+		return beingClass;
 	}
 	
 	public Vector2 getPosition(){
@@ -227,20 +224,12 @@ public class Being {
 		ragdoll.setLinearVelocity(velocity.x, velocity.y);
 	}
 
-	public NetAccount getAccount() {
-		return account;
-	}
-
-	public void setAccount(NetAccount account) {
-		this.account = account;
-	}
-
 	public Vector2 getVelocity() {
 		return ragdoll.getLinearVelocity().cpy();
 	}
 
 	@Override public String toString(){
-		return "name:" + name + " type:" + beingType + " loc=" + getPosition();
+		return "name:" + name + " type:" + beingClass + " loc=" + getPosition();
 	}
 
 	public boolean isMoveRight() {
@@ -299,12 +288,12 @@ public class Being {
 		return dead;
 	}
 	
-	public FactionType getFactionType(){
-		return factionType;
+	public Race getFactionType(){
+		return race;
 	}
 	
-	public void setFactionType(FactionType factionType){
-		this.factionType = factionType;
+	public void setFactionType(Race factionType){
+		this.race = factionType;
 	}
 
 	public int getCash() {

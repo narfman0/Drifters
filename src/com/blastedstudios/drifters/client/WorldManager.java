@@ -14,10 +14,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.blastedstudios.drifters.network.Generated.FactionType;
-import com.blastedstudios.drifters.network.Generated.Gun;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.network.Generated.GunShot;
-import com.blastedstudios.drifters.network.Generated.NetAccount;
 import com.blastedstudios.drifters.network.Generated.NetBeing;
 import com.blastedstudios.drifters.network.Generated.NetBeingList;
 import com.blastedstudios.drifters.network.Generated.PlayerReward;
@@ -41,7 +39,7 @@ public class WorldManager implements EventListener {
 	private Timer timer;
 	private WeaponLockerManager weaponLockerManager;
 	
-	public WorldManager(NetBeing netBeing, NetAccount account){
+	public WorldManager(NetBeing netBeing){
 		weaponLockerManager = new WeaponLockerManager();
 		beings = Collections.synchronizedMap(new HashMap<String, Being>());
 		debugDraw = Properties.getBool("debug.draw");
@@ -50,16 +48,15 @@ public class WorldManager implements EventListener {
 		timer = new Timer("WorldManager", true);
 		timer.schedule(new WorldStepTimerTask(world), 100, 33);
 
-		player = new Being(world, netBeing.getName(), account,
-				netBeing.getBeingType(), netBeing.getPosX(), netBeing.getPosY(), 
+		player = new Being(world, netBeing.getName(),
+				netBeing.getBeingClass(), netBeing.getPosX(), netBeing.getPosY(), 
 				netBeing.getMaxHp(), netBeing.getHp(), netBeing.getGunsList(), 
-				netBeing.getCurrentGun(), netBeing.getFactionType(), netBeing.getCash(),
+				netBeing.getCurrentGun(), netBeing.getRace(), netBeing.getCash(),
 				netBeing.getLevel(), netBeing.getXp());
 		renderer = new Box2DDebugRenderer();
 		particleEffect = new ParticleEffect();
 		particleEffect.dispose();
 		//TODO particleEffect.load(Gdx.files.internal("data/particles/blood.p"), Gdx.files.internal("data/textures"));
-		EventManager.addListener(EventEnum.CHARACTER_GUN_BUY_RESPONSE, this);
 		EventManager.addListener(EventEnum.CHARACTER_POSITION_SERVER, this);
 		EventManager.addListener(EventEnum.CHARACTER_RELOAD_SUCCESS, this);
 		EventManager.addListener(EventEnum.CHARACTER_REWARD, this);
@@ -99,16 +96,11 @@ public class WorldManager implements EventListener {
 		case CHARACTER_SHOT:
 			handleShotDamage((ShotDamage) data[0]);
 			break;
-		case CHARACTER_GUN_BUY_RESPONSE:
-			Gun gun = (Gun) data[0];
-			if(player.buy(gun))
-				logger.info(player.getName() + " bought " + gun.getName() + " successfully for $" + gun.getCost());
-			break;
 		case GUN_SHOT:
 			final GunShot shot = (GunShot) data[0];
 			timer.schedule(new TimerTask() {
 				@Override public void run() {
-					FactionType faction = getBeing(shot.getBeing()).getFactionType();
+					Race faction = getBeing(shot.getBeing()).getFactionType();
 					PhysicsHelper.createBullet(world, shot, faction);
 				}
 			}, 0);
@@ -145,16 +137,10 @@ public class WorldManager implements EventListener {
 			final Vector2 position = new Vector2(netBeing.getPosX(), netBeing.getPosY());
 			final Vector2 velocity = new Vector2(netBeing.getVelX(), netBeing.getVelY());
 			if(!beings.containsKey(netBeing.getName())){
-				NetAccount netAccount = null;
-				if(netBeing.hasAccount()){
-					NetAccount.Builder accountBuilder = NetAccount.newBuilder();
-					accountBuilder.setEmail(netBeing.getAccount());
-					netAccount = accountBuilder.build();
-				}
-				final Being being = new Being(world, netBeing.getName(), netAccount, 
-						netBeing.getBeingType(), position.x, position.y, netBeing.getMaxHp(),
+				final Being being = new Being(world, netBeing.getName(), 
+						netBeing.getBeingClass(), position.x, position.y, netBeing.getMaxHp(),
 						netBeing.getHp(), netBeing.getGunsList(), netBeing.getCurrentGun(),
-						netBeing.getFactionType(), netBeing.getCash(), netBeing.getLevel(),
+						netBeing.getRace(), netBeing.getCash(), netBeing.getLevel(),
 						netBeing.getXp());
 				timer.schedule(new TimerTask() {
 					@Override public void run() {

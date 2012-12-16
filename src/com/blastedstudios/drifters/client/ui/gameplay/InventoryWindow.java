@@ -62,14 +62,14 @@ public class InventoryWindow extends Window {
 		}
 	}
 	
-	private void swap(final Skin skin, final Being being, boolean up, int current, 
-			Gun gun, List<Gun> guns, List<GunTable> gunTables){
-		List<Gun> newGuns = new ArrayList<Gun>(guns);
-		newGuns.remove(current);
-		newGuns.add(current+(up?-1:1), gun);
-		being.setGuns(newGuns);
-		for(GunTable table : gunTables)
-			table.remove();
-		addGunTables(skin, being);
-	}
+//	private void swap(final Skin skin, final Being being, boolean up, int current, 
+//			Gun gun, List<Gun> guns, List<GunTable> gunTables){
+//		List<Gun> newGuns = new ArrayList<Gun>(guns);
+//		newGuns.remove(current);
+//		newGuns.add(current+(up?-1:1), gun);
+//		being.setGuns(newGuns);
+//		for(GunTable table : gunTables)
+//			table.remove();
+//		addGunTables(skin, being);
+//	}
 }

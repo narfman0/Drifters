@@ -3,31 +3,30 @@ package proto;
 option java_package = "com.blastedstudios.drifters.network";
 option java_outer_classname = "Generated";
 
-enum FactionType {
+enum Race {
   NEUTRAL = 0;
-  GORILLAS = 1;
-  ZEALOTS = 2;
-  STRANGERS = 3;
+  HUMAN = 1;
+  ELF = 2;
+  DWARF = 3;
 }
 
 message NetBeing {
   required string name = 1;
-  optional string account = 2;
   optional float pos_x = 3;
   optional float pos_y = 4;
   optional float vel_x = 5;
   optional float vel_y = 6;
-  optional BeingType being_type = 7;
+  optional Class beingClass = 7;
   optional float max_hp = 8;
   optional float hp = 9;
-  optional FactionType faction_type = 10 [default = NEUTRAL];
+  optional Race race = 10 [default = NEUTRAL];
   repeated Gun guns = 11;
   optional int32 currentGun = 12;
   optional int32 cash = 13;
   optional int32 level = 14;
   optional int32 xp = 15;
 
-  enum BeingType {
+  enum Class {
     ASSAULT = 1;
     DEMO = 2;
     SNIPER = 3;
@@ -75,16 +74,6 @@ message GunShot {
 	optional float dir_y = 6;
 }
 
-message NetAccount {
-  required string email = 1;
-  optional string password = 2;
-  repeated NetBeing beings = 3;
-}
-
-message NetBeingCreateFailed {
-  required string reason = 1;
-}
-
 message NetBeingList {
 	repeated NetBeing beings = 1;
 }
@@ -122,7 +111,7 @@ message PlayerReward {
 }
 
 message WeaponLocker {
-  optional FactionType faction = 1;
+  optional Race faction = 1;
   optional float pos_x = 2;
   optional float pos_y = 3;
 }

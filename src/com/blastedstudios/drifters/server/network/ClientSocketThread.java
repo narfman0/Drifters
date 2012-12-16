@@ -6,11 +6,8 @@ import java.net.Socket;
 import java.util.Collection;
 import java.util.logging.Logger;
 
-import com.blastedstudios.drifters.network.Generated.Gun;
 import com.blastedstudios.drifters.network.Generated.GunShot;
-import com.blastedstudios.drifters.network.Generated.NetAccount;
 import com.blastedstudios.drifters.network.Generated.NetBeing;
-import com.blastedstudios.drifters.network.Generated.NetBeingCreateFailed;
 import com.blastedstudios.drifters.network.Generated.NetBeingList;
 import com.blastedstudios.drifters.network.Generated.PlayerReward;
 import com.blastedstudios.drifters.network.Generated.ReloadRequest;
@@ -20,9 +17,7 @@ import com.blastedstudios.drifters.server.Server;
 import com.blastedstudios.drifters.util.EventEnum;
 import com.blastedstudios.drifters.util.EventManager;
 import com.blastedstudios.drifters.util.EventManager.EventListener;
-import com.blastedstudios.drifters.util.Properties;
 import com.blastedstudios.drifters.world.Being;
-import com.blastedstudios.drifters.world.GunFactory;
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
 import com.google.protobuf.Message;
@@ -38,7 +33,7 @@ public class ClientSocketThread extends Thread implements EventListener{
 	private CodedOutputStream outToClient;
 	private CodedInputStream inFromClient;
 	private Server server;
-	private NetAccount account;
+	private NetBeing being;
 
 	public ClientSocketThread(Socket clientSocket, Server server){
 		super("ClientSocket-"+clientSocketThreadCount++);
@@ -78,86 +73,17 @@ public class ClientSocketThread extends Thread implements EventListener{
 	private void handleMessage(EventEnum type, byte[] buffer) 
 	throws IOException, ClassNotFoundException{
 		switch(type){
-		case ACCOUNT_RETRIEVE_REQUEST:{
-			NetAccount receivedAccount = NetAccount.parseFrom(buffer);
-			account = server.accountThread.getAccount(receivedAccount.getEmail(), receivedAccount.getPassword());
-			if(account != null)
-				sendMessage(EventEnum.ACCOUNT_RETRIEVE_RESPONSE, account);
-			logger.info("Account retrieved: " + receivedAccount.getEmail());
-			break;
-		}case CHARACTER_CREATE_REQUEST:{
-			NetBeing.Builder netBeing = NetBeing.newBuilder(NetBeing.parseFrom(buffer)); 
-			String failMessage = null;
-			for(NetBeing existingBeing : server.accountThread.accounts.get(netBeing.getAccount()).getBeingsList())
-				if(existingBeing.getName().equals(netBeing.getName())){
-					failMessage = "Name already taken";
-					logger.info("Name already taken for " + netBeing.getName());
-				}
-			if(failMessage == null){
-				float maxHP = Properties.getInt("character.class." + netBeing.getBeingType().name().toLowerCase() + ".maxhp");
-				netBeing.setMaxHp(maxHP);
-				netBeing.setHp(maxHP);
-				netBeing.addGuns(GunFactory.getGlock());
-				switch(netBeing.getBeingType()){
-				case ASSAULT:
-					netBeing.addGuns(GunFactory.getAk47());
-					break;
-				case DEMO:
-					netBeing.addGuns(GunFactory.getUZI());
-					break;
-				case SNIPER:
-					netBeing.addGuns(GunFactory.getPSG1());
-					break;
-				case SPY:
-					netBeing.addGuns(GunFactory.getWaltherPPK());
-					break;
-				case TANK:
-					netBeing.addGuns(GunFactory.getBenelliM4());
-					break;
-				}
-				netBeing.setCurrentGun(0);
-				netBeing.setCash(0);
-				netBeing.setLevel(1);
-				netBeing.setXp(0);
-				NetAccount previous = server.accountThread.accounts.remove(netBeing.getAccount());
-				NetAccount.Builder account = NetAccount.newBuilder(previous);
-				account.addBeings(netBeing);
-				NetAccount newAccount = account.build();
-				server.accountThread.accounts.put(account.getEmail(), newAccount);
-				server.accountThread.saveAccount(newAccount);
-				logger.info("Being " + netBeing.getName() + " created for acct " + netBeing.getAccount());
-				sendMessage(EventEnum.CHARACTER_CREATE_SUCCESS, netBeing.build());
-			}else{
-				NetBeingCreateFailed.Builder failedMessage = NetBeingCreateFailed.newBuilder();
-				failedMessage.setReason(failMessage);
-				sendMessage(EventEnum.CHARACTER_CREATE_FAILED, failedMessage.build());
-			}
-			break;
-		}case CHARACTER_GUN_BUY_REQUEST:{
-			Gun gun = Gun.parseFrom(buffer);
-			for(int i=0; i<account.getBeingsCount(); i++){
-				Being being = server.world.getBeing(account.getBeings(i).getName());
-				if(being != null && being.buy(gun)){
-					logger.info("Being " + being.getName() + " successfully bought " + 
-							gun.getName() + " for $" + gun.getCost());
-					EventManager.sendEvent(EventEnum.CHARACTER_GUN_BUY_RESPONSE, gun);
-				}
-			}
-			break;
-		}case CHARACTER_POSITION_CLIENT:{
+		case CHARACTER_POSITION_CLIENT:{
 			EventManager.sendEvent(EventEnum.CHARACTER_POSITION_CLIENT, NetBeing.parseFrom(buffer));
 			break;
 		}case CHARACTER_CHOSEN_INITIATE:{
 			NetBeing netBeing = NetBeing.parseFrom(buffer);
-			NetAccount account = server.accountThread.accounts.get(netBeing.getAccount());
-			for(NetBeing being : account.getBeingsList())
-				if(being.getName().equals(netBeing.getName())){
-					EventManager.sendEvent(EventEnum.CHARACTER_CHOSEN_INITIATE, netBeing);
-					sendMessage(EventEnum.CHARACTER_CHOSEN_COMPLETE);
-					
-					for(WeaponLocker locker : server.world.getWeaponLockers())
-						sendMessage(EventEnum.WORLD_WEAPON_LOCKER_ADDED, locker);
-				}
+			
+			EventManager.sendEvent(EventEnum.CHARACTER_CHOSEN_INITIATE, netBeing);
+			sendMessage(EventEnum.CHARACTER_CHOSEN_COMPLETE);
+			
+			for(WeaponLocker locker : server.world.getWeaponLockers())
+				sendMessage(EventEnum.WORLD_WEAPON_LOCKER_ADDED, locker);
 			break;
 		}case CHARACTER_RELOAD_REQUEST:
 			ReloadRequest request = ReloadRequest.parseFrom(buffer);
@@ -208,10 +134,8 @@ public class ClientSocketThread extends Thread implements EventListener{
 			for(Being being : beings){
 				NetBeing.Builder beingBuilder = NetBeing.newBuilder();
 				beingBuilder.setName(being.getName());
-				if(being.getAccount() != null)
-					beingBuilder.setAccount(being.getAccount().getEmail());
-				beingBuilder.setBeingType(being.getType());
-				beingBuilder.setFactionType(being.getFactionType());
+				beingBuilder.setBeingClass(being.getType());
+				beingBuilder.setRace(being.getFactionType());
 				beingBuilder.setPosX(being.getPosition().x);
 				beingBuilder.setPosY(being.getPosition().y);
 				beingBuilder.setVelX(being.getVelocity().x);
@@ -258,9 +182,7 @@ public class ClientSocketThread extends Thread implements EventListener{
 		try {
 			socket.close();
 		} catch (IOException e) {}
-		if(account != null){
-			server.accountThread.saveAccount(account);
-			EventManager.sendEvent(EventEnum.LOGOUT_COMPLETE, account);
-		}
+		if(being != null)
+			EventManager.sendEvent(EventEnum.LOGOUT_COMPLETE, being);
 	}
 }

@@ -19,9 +19,8 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.blastedstudios.drifters.client.WorldStepTimerTask;
 import com.blastedstudios.drifters.network.Generated.Gun;
 import com.blastedstudios.drifters.network.Generated.Gun.WeaponType;
-import com.blastedstudios.drifters.network.Generated.FactionType;
+import com.blastedstudios.drifters.network.Generated.Race;
 import com.blastedstudios.drifters.network.Generated.GunShot;
-import com.blastedstudios.drifters.network.Generated.NetAccount;
 import com.blastedstudios.drifters.network.Generated.NetBeing;
 import com.blastedstudios.drifters.network.Generated.PlayerReward;
 import com.blastedstudios.drifters.network.Generated.PlayerReward.RewardReason;
@@ -104,18 +103,15 @@ public class WorldManager implements EventListener {
 					}
 				}
 			}, 0);
-			server.accountThread.updateAccount(being);
-			server.accountThread.saveAccount(being.getAccount());
 			break;
 		}case CHARACTER_CHOSEN_INITIATE:{
 			final NetBeing netBeing = (NetBeing) data[0];
 			timer.schedule(new TimerTask() {
 				@Override public void run() {
 					Being constructedBeing = new Being(world, netBeing.getName(), 
-							server.accountThread.accounts.get(netBeing.getAccount()), 
-							netBeing.getBeingType(), netBeing.getPosX(), netBeing.getPosY(), 
+							netBeing.getBeingClass(), netBeing.getPosX(), netBeing.getPosY(), 
 							netBeing.getMaxHp(), netBeing.getHp(), netBeing.getGunsList(), 
-							netBeing.getCurrentGun(), netBeing.getFactionType(), netBeing.getCash(),
+							netBeing.getCurrentGun(), netBeing.getRace(), netBeing.getCash(),
 							netBeing.getLevel(), netBeing.getXp());
 					logger.info("Being chosen: " + netBeing.getName());
 					synchronized(beings){
@@ -156,7 +152,7 @@ public class WorldManager implements EventListener {
 				timer.schedule(new TimerTask() {
 					@Override public void run() {
 						synchronized (world) {
-							FactionType faction = getBeing(gunshot.getBeing()).getFactionType();
+							Race faction = getBeing(gunshot.getBeing()).getFactionType();
 							PhysicsHelper.createBullet(world, gunshot, faction);
 							EventManager.sendEvent(EventEnum.GUN_SHOT, gunshot);
 						}
@@ -165,14 +161,13 @@ public class WorldManager implements EventListener {
 			}
 			break;
 		}case LOGOUT_COMPLETE:{
-			NetAccount account = (NetAccount) data[0];
-			for(NetBeing being : account.getBeingsList())
-				if(beings.containsKey(being.getName())){
-					synchronized(beings){
-						beings.remove(being.getName());
-					}
-					//TODO send network message to remote players informing of player leave
+			NetBeing being = (NetBeing) data[0];
+			if(beings.containsKey(being.getName())){
+				synchronized(beings){
+					beings.remove(being.getName());
 				}
+				//TODO send network message to remote players informing of player leave
+			}
 			break;
 		}case WORLD_STRATEGIC_POINT_CAPTURED:{
 			final StrategicPoint point = (StrategicPoint) data[0];
