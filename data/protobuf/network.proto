@@ -1,0 +1,128 @@
+package proto;
+
+option java_package = "com.blastedstudios.drifters.network";
+option java_outer_classname = "Generated";
+
+enum FactionType {
+  NEUTRAL = 0;
+  GORILLAS = 1;
+  ZEALOTS = 2;
+  STRANGERS = 3;
+}
+
+message NetBeing {
+  required string name = 1;
+  optional string account = 2;
+  optional float pos_x = 3;
+  optional float pos_y = 4;
+  optional float vel_x = 5;
+  optional float vel_y = 6;
+  optional BeingType being_type = 7;
+  optional float max_hp = 8;
+  optional float hp = 9;
+  optional FactionType faction_type = 10 [default = NEUTRAL];
+  repeated Gun guns = 11;
+  optional int32 currentGun = 12;
+  optional int32 cash = 13;
+  optional int32 level = 14;
+  optional int32 xp = 15;
+
+  enum BeingType {
+    ASSAULT = 1;
+    DEMO = 2;
+    SNIPER = 3;
+    SPY = 4;
+    TANK = 5;
+  }
+}
+
+message Gun {
+  optional WeaponType type = 1 [default = MELEE];
+  optional float damage = 2; // base damage if one shot in the chest
+  optional float accuracy = 3; // max angle off target
+  optional float rate_of_fire = 4; // rounds/second
+  optional float reload_speed = 5; // seconds
+  optional int32 projectile_count = 6 [default = 1]; // Number of shots included, e.g. 5 for shotgun
+  optional float muzzle_velocity = 7; // meters/second
+  optional float recoil = 8; // joules
+  optional int32 rounds_per_clip = 9;
+  optional int32 current_rounds = 10;
+  optional int32 cost = 11;
+  optional string name = 12;
+
+  enum WeaponType {
+  	MELEE = 0;
+  	FLAMETHROWER = 1;
+  	PISTOL = 2;
+  	SMG = 3;
+  	SHOTGUN = 4;
+  	RIFLE = 5;
+  	SNIPER = 6;
+  	ROCKET_LAUNCHER = 7;
+  	GRENADE_LAUNCHER = 8;
+  	GRENADE = 9;
+  	MOLOTOV = 10;
+  	EXPLOSIVE = 11;
+  }
+}
+
+message GunShot {
+	optional Gun gun = 1;
+	optional string being = 2;
+	optional float pos_x = 3;
+	optional float pos_y = 4;
+	optional float dir_x = 5;
+	optional float dir_y = 6;
+}
+
+message NetAccount {
+  required string email = 1;
+  optional string password = 2;
+  repeated NetBeing beings = 3;
+}
+
+message NetBeingCreateFailed {
+  required string reason = 1;
+}
+
+message NetBeingList {
+	repeated NetBeing beings = 1;
+}
+
+message ReloadRequest {
+	required string being = 1;
+}
+
+message ShotDamage {
+	required string being = 1;
+	optional float damage = 2;
+	optional BodyPart body_part = 3;
+	optional float dir_x = 4;
+	optional float dir_y = 5;
+
+	enum BodyPart {
+		HEAD = 1;
+		TORSO = 2;
+		LARM = 3;
+		RARM = 4;
+		LLEG = 5;
+		RLEG = 6;
+	}
+}
+
+message PlayerReward {
+	optional string player = 1;
+	optional RewardReason reason = 2;
+	optional int32 reward = 3;
+
+	enum RewardReason{
+		ENEMY_KILLED = 0;
+		ENEMY_HIT = 1;
+	}
+}
+
+message WeaponLocker {
+  optional FactionType faction = 1;
+  optional float pos_x = 2;
+  optional float pos_y = 3;
+}

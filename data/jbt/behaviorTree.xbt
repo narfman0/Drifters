@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tree>
+  <Node id="Node_0" name="Root" type="Root">
+    <Children>
+      <Node id="Node_28" type="Repeat">
+        <Children>
+          <Node id="Node_3" type="Selector">
+            <Children>
+              <Node id="Node_31" type="Sequence">
+                <Children>
+                  <Node id="Node_32" name="IsDead" type="Condition" />
+                  <Node id="Node_33" name="Respawn" type="Action" />
+                  <Node id="Node_34" name="Teleport" type="Action">
+                    <Parameters>
+                      <Parameter name="target" fromcontext="true">RespawnTarget</Parameter>
+                    </Parameters>
+                  </Node>
+                </Children>
+              </Node>
+              <Node id="Node_4" type="Sequence">
+                <Children>
+                  <Node id="Node_5" name="HighDanger" type="Condition" />
+                  <Node id="Node_30" name="Shoot" type="Action">
+                    <Parameters>
+                      <Parameter name="target" fromcontext="true">HighDangerTarget</Parameter>
+                    </Parameters>
+                  </Node>
+                  <Node id="Node_6" name="ClosestFriendlyBase" type="Action" />
+                  <Node id="Node_7" name="Move" type="Action">
+                    <Parameters>
+                      <Parameter name="target" fromcontext="true">ClosestFriendlyBaseTarget</Parameter>
+                    </Parameters>
+                  </Node>
+                </Children>
+              </Node>
+              <Node id="Node_8" type="Sequence">
+                <Children>
+                  <Node id="Node_9" name="LowDanger" type="Condition" />
+                  <Node id="Node_13" name="Shoot" type="Action">
+                    <Parameters>
+                      <Parameter name="target" fromcontext="true">LowDangerTarget</Parameter>
+                    </Parameters>
+                  </Node>
+                  <Node id="Node_10" name="ClosestCover" type="Action" />
+                  <Node id="Node_11" name="Move" type="Action">
+                    <Parameters>
+                      <Parameter name="target" fromcontext="true">ClosestCoverTarget</Parameter>
+                    </Parameters>
+                  </Node>
+                </Children>
+              </Node>
+              <Node id="Node_14" type="Sequence">
+                <Children>
+                  <Node id="Node_15" name="InCover" type="Condition" />
+                  <Node id="Node_16" type="Selector">
+                    <Children>
+                      <Node id="Node_17" type="Sequence">
+                        <Children>
+                          <Node id="Node_18" name="LowDanger" type="Condition" />
+                          <Node id="Node_20" name="Shoot" type="Action">
+                            <Parameters>
+                              <Parameter name="target" fromcontext="true">LowDangerTarget</Parameter>
+                            </Parameters>
+                          </Node>
+                        </Children>
+                      </Node>
+                      <Node id="Node_27" type="Failure" />
+                    </Children>
+                  </Node>
+                </Children>
+              </Node>
+              <Node id="Node_24" type="Sequence">
+                <Children>
+                  <Node id="Node_25" name="CurrentObjective" type="Action" />
+                  <Node id="Node_29" name="Move" type="Action">
+                    <Parameters>
+                      <Parameter name="target" fromcontext="true">CurrentObjectiveTarget</Parameter>
+                    </Parameters>
+                  </Node>
+                </Children>
+              </Node>
+            </Children>
+          </Node>
+        </Children>
+      </Node>
+    </Children>
+  </Node>
+</Tree>
+

@@ -1,0 +1,29 @@
+<Domain package="com.blastedstudios.drifters.server.ai.bt">
+<ActionSet>
+	<Action name="Move">
+		<Parameter name="target" type="COORDINATE"/>
+	</Action>
+	<Action name="Shoot">
+		<Parameter name="target" type="COORDINATE"/>
+	</Action>
+	<Action name="Teleport">
+		<Parameter name="target" type="COORDINATE"/>
+	</Action>
+
+	<Action name="ClosestCover"/>
+	<Action name="CurrentObjective"/>
+	<Action name="ClosestFriendlyBase"/>
+	<Action name="Respawn"/>
+</ActionSet>
+<SensorSet>
+	<Sensor name="LowDanger" type="BOOLEAN"/>
+	<Sensor name="HighDanger" type="BOOLEAN"/>
+	<Sensor name="InCover" type="BOOLEAN"/>
+	<Sensor name="IsDead" type="BOOLEAN"/>
+</SensorSet>
+<EntitySet>
+</EntitySet>
+<GoalSet>
+</GoalSet>
+</Domain>
+
